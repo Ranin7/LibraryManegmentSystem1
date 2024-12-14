@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.HomeController">
+    <children>
+        <TextField layoutX="139.0" layoutY="31.0" prefHeight="26.0" prefWidth="303.0" promptText="What whould like to read?" />
+        <AnchorPane layoutX="31.0" layoutY="76.0" prefHeight="133.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+            <children>
+                <Button layoutX="127.0" layoutY="111.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="134.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                   <!-- <image>
+                        <Image url="@../../../../../../../../../Downloads/download%20(1).png" />
+                    </image>-->
+                </ImageView>
+                <Text layoutX="107.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Truth About Animals" wrappingWidth="67.20000000000005">
+                    <font>
+                        <Font name="Baskerville Old Face" size="11.0" />
+                    </font>
+                </Text>
+            <ImageView fitHeight="141.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home1.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="31.0" layoutY="230.0" prefHeight="133.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                 <!--   <image>
+                        <Image url="@../../../../../../../../../Downloads/download%20(4).png" />
+                    </image>-->
+                </ImageView>
+                <Button layoutX="128.0" layoutY="127.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <Text layoutX="119.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal Books For Kids " wrappingWidth="67.20000000000005">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font>
+                </Text>
+            <ImageView fitHeight="150.0" fitWidth="117.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Home4.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="300.0" layoutY="236.0" prefHeight="133.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+            <children>
+                <Button layoutX="127.0" layoutY="125.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="149.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+                  <!--  <image>
+                        <Image url="@../../../../../../../../../Downloads/download%20(5).png" />
+                    </image>-->
+                </ImageView>
+                <Text layoutX="118.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal Rights Law" wrappingWidth="72.416015625">
+                    <font>
+                        <Font name="Bell MT Bold" size="12.0" />
+                    </font>
+                </Text>
+            <ImageView fitHeight="150.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Home2.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="300.0" layoutY="76.0" prefHeight="133.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+            <children>
+                <Button layoutX="126.0" layoutY="110.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="134.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                    <!--<image>
+                        <Image url="@../../../../../../../../../Downloads/download%20(2).png" />
+                    </image>-->
+                </ImageView>
+                <Text layoutX="121.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mammals">
+                    <font>
+                        <Font name="Bell MT Bold" size="17.0" />
+                    </font>
+                </Text>
+            <ImageView fitHeight="142.0" fitWidth="118.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Home3.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <Button fx:id="addBookB" layoutX="520.0" layoutY="56.0" mnemonicParsing="false" onAction="#AddBooks" style="-fx-background-color: #657166;" text="Add Book" />
+        <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="117.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Home5.jpg" />
+         </image></ImageView>
+        <Button layoutX="515.0" layoutY="87.0" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="48.0" prefWidth="78.0" style="-fx-background-color: #657166;" text="Add Reservation" textAlignment="CENTER" wrapText="true" />
+        <Button layoutX="511.0" layoutY="174.0" mnemonicParsing="false" onAction="#goToBooksView" style="-fx-background-color: #657166;" text="Update Book" />
+      <Button layoutX="515.0" layoutY="143.0" mnemonicParsing="false" onAction="#goToReservation" style="-fx-background-color: #657166;" text="Reservation" />
+      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="-30.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</AnchorPane>

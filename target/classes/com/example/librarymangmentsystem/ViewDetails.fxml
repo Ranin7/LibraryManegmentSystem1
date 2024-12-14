@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #cfd6ca;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.ViewDetailsController">
+    <children>
+        <HBox prefHeight="10.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToHome" prefHeight="13.0" prefWidth="46.0" style="-fx-background-color: #b3c3b4;" text="Back" textAlignment="CENTER" textFill="#657166">
+                    <font>
+                        <Font name="Arial Narrow Bold" size="10.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow>
+                            <color>
+                                <Color red="0.890350878238678" green="0.8766108751296997" blue="0.8766108751296997" />
+                            </color>
+                        </InnerShadow>
+                    </effect>
+                </Button>
+                <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="555.0" style="-fx-background-color: #657166;" text="View Details" textFill="#fde8d8">
+                    <font>
+                        <Font name="Algerian" size="17.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox prefHeight="396.0" prefWidth="600.0">
+            <children>
+                <ImageView fx:id="bookImageView" fitHeight="382.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" />
+                <VBox prefHeight="383.0" prefWidth="355.0">
+                    <children>
+                        <HBox prefHeight="76.4" prefWidth="354.0">
+                            <children>
+                                <Label text="Title" textFill="#657166">
+                                    <font>
+                                        <Font name="Algerian" size="15.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="25.0" right="15.0" top="30.0" />
+                                    </padding>
+                                </Label>
+                                <Label fx:id="titleLabel" prefHeight="47.0" prefWidth="240.0" textFill="#fde8d8">
+                                    <padding>
+                                        <Insets left="25.0" top="30.0" />
+                                    </padding>
+                                    <font>
+                                        <Font name="Arial" size="12.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="76.4" prefWidth="354.0">
+                            <children>
+                                <Label text="Auther" textFill="#657166">
+                                    <padding>
+                                        <Insets left="25.0" right="15.0" top="20.0" />
+                                    </padding>
+                                    <font>
+                                        <Font name="Algerian" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="authorLabel" prefHeight="37.0" prefWidth="184.0" textFill="#fde8d8">
+                                    <padding>
+                                        <Insets left="25.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="76.4" prefWidth="354.0">
+                            <children>
+                                <Label contentDisplay="CENTER" text="Genre" textFill="#657166">
+                                    <font>
+                                        <Font name="Algerian" size="15.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="25.0" right="15.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                                <Label fx:id="genreLabel" prefHeight="37.0" prefWidth="249.0" textFill="#fde8d8">
+                                    <padding>
+                                        <Insets left="25.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="76.4" prefWidth="354.0">
+                            <children>
+                                <Label text="Publication Year" textFill="#657166">
+                                    <font>
+                                        <Font name="Algerian" size="15.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="25.0" right="15.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                                <Label fx:id="publicationYearLabel" prefHeight="37.0" prefWidth="71.0" textFill="#fde8d8">
+                                    <padding>
+                                        <Insets left="25.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="73.0" prefWidth="354.0">
+                            <children>
+                                <Label prefHeight="38.0" prefWidth="204.0" text="Availability Status" textFill="#657166">
+                                    <font>
+                                        <Font name="Algerian" size="15.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="25.0" right="15.0" top="20.0" />
+                                    </padding>
+                                </Label>
+                                <CheckBox fx:id="availabilityCheckBox" mnemonicParsing="false" textFill="#648765">
+                                    <padding>
+                                        <Insets top="20.0" />
+                                    </padding>
+                                </CheckBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>
