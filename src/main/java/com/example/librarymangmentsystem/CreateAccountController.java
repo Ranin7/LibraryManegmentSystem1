@@ -10,17 +10,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ViewDetailsController {
-
+public class CreateAccountController {
     @FXML
-    private Button backButton;
-
+    private Button back;
     @FXML
-    public void backToHome(ActionEvent event) throws IOException {
+    public void goToHome(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         Parent root = loader.load();
 
-        Stage stage = (Stage) backButton.getScene().getWindow();
+        // Transition to the book list view
+        Stage stage = (Stage) back.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 }

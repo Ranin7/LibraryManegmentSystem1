@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name="Books")
 public class Books {
 
-    @Column(name="Book Name")
+    @Column(name= "BookName")
     private String bookName;
 
     @Id
@@ -69,7 +69,7 @@ public class Books {
         this.publicationYear = publicationYear;
     }
 
-    @Column(name="Publication Year")
+    @Column(name= "PublicationYear")
     private String publicationYear;
 
 

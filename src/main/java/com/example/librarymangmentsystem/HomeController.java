@@ -19,7 +19,6 @@ public class HomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("addBook.fxml"));
         Parent root = loader.load();
 
-        // Transition to the book list view
         Stage stage = (Stage) addBookB.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
@@ -29,7 +28,6 @@ public class HomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDetails.fxml"));
         Parent root = loader.load();
 
-        // Transition to the book list view
         Stage stage = (Stage) addBookB.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
@@ -58,6 +56,15 @@ public void goToAddReservation(ActionEvent event) throws IOException {
     @FXML
     public void goToReservation(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Reservations.fxml"));
+        Parent root = loader.load();
+
+        // Transition to the book list view
+        Stage stage = (Stage) addBookB.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+    @FXML
+    public void goToCreateAccount(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("createAccount.fxml"));
         Parent root = loader.load();
 
         // Transition to the book list view

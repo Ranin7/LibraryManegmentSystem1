@@ -13,7 +13,7 @@ public class ReservationController {
     @FXML
     private void GoBack(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
             Scene goback = new Scene(fxmlLoader.load());
             Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             currentStage.setScene(goback);

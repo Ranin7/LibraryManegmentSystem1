@@ -1,47 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polyline?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.VerificationController">
+<AnchorPane fx:controller="com.example.librarymangmentsystem.VerificationController"
+            prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label contentDisplay="CENTER" layoutX="187.0" layoutY="82.0" prefHeight="43.0" prefWidth="243.0" text="Verification Code" textAlignment="CENTER">
+        <Label text="Verification Code" wrapText="true" alignment="CENTER"
+               AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="28.0" />
             </font>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
         </Label>
-        <Label layoutX="116.0" layoutY="125.0" text="Please enter the verification code sent to you to confirm your identity" textFill="#767575" />
-        <Polyline fill="#d8dcd8" layoutX="340.0" layoutY="121.0" points="260.0, -121.0, -48.0, -53.00001525878906, 260.0, -114.60000610351562, 260.0, -121.0" stroke="#657166" strokeType="INSIDE">
-            <effect>
-                <Blend mode="OVERLAY" />
-            </effect>
-        </Polyline>
-        <Polyline fill="#d8dcd8" layoutX="50.0" layoutY="97.0" points="-50.0, -89.80000305175781, 242.0, -29.000015258789062, -50.0, -97.0, -50.0, -97.0" stroke="#657166" strokeType="INSIDE">
-            <effect>
-                <Blend mode="OVERLAY" />
-            </effect>
-        </Polyline>
-        <Circle fill="WHITE" layoutX="207.0" layoutY="200.0" radius="27.0" stroke="#657166" strokeType="INSIDE" strokeWidth="2.0" />
-        <Circle fill="WHITE" layoutX="393.0" layoutY="200.0" radius="27.0" stroke="#657166" strokeType="INSIDE" strokeWidth="2.0" />
-        <Circle fill="WHITE" layoutX="332.0" layoutY="200.0" radius="27.0" stroke="#657166" strokeType="INSIDE" strokeWidth="2.0" />
-        <Circle fill="WHITE" layoutX="271.0" layoutY="200.0" radius="27.0" stroke="#657166" strokeType="INSIDE" strokeWidth="2.0" />
-        <TextField layoutX="191.0" layoutY="187.0" prefHeight="18.0" prefWidth="32.0" style="-fx-background-color: white;" />
-        <TextField layoutX="255.0" layoutY="187.0" prefHeight="18.0" prefWidth="32.0" style="-fx-background-color: white;" />
-        <TextField layoutX="316.0" layoutY="187.0" prefHeight="18.0" prefWidth="32.0" style="-fx-background-color: white;" />
-        <TextField layoutX="377.0" layoutY="187.0" prefHeight="18.0" prefWidth="32.0" style="-fx-background-color: white;" />
-        <Button layoutX="169.0" layoutY="289.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: #657166; -fx-background-radius: 4;" text="Complete Verification" textFill="#fde8d3">
+        <Label text="Please enter the verification code sent to you to confirm your identity"
+               textFill="#767575" wrapText="true" alignment="CENTER"
+               AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <HBox spacing="10.0" alignment="CENTER"
+              AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <children>
+                <TextField prefWidth="60.0" prefHeight="50.0" />
+                <TextField prefWidth="60.0" prefHeight="50.0" />
+                <TextField prefWidth="60.0" prefHeight="50.0" />
+                <TextField prefWidth="60.0" prefHeight="50.0" />
+            </children>
+        </HBox>
+        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="1.0" style="-fx-background-color: #657166; -fx-background-radius: 4;" text="Complete Verification" textFill="#fde8d3" onAction="#handleVerificationComplete">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -56,6 +50,10 @@
                     </topInput>
                 </Blend>
             </effect>
+            <AnchorPane.bottomAnchor>80.0</AnchorPane.bottomAnchor>
+            <AnchorPane.leftAnchor>150.0</AnchorPane.leftAnchor>
+            <AnchorPane.rightAnchor>150.0</AnchorPane.rightAnchor>
         </Button>
     </children>
 </AnchorPane>
+

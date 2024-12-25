@@ -56,9 +56,14 @@ public class BookDOAImp implements BookDOA {
     }
 
     @Override
-    public List<Books> getAll(Books book) {
-        Session session = sessionFactory.openSession();
-        return session.createQuery("FROM Books", Books.class).list(); // Assuming you're using Hibernate Query Language (HQL)
+    public List<Books> getAll() {
+        List<Books> books = null;
+        try (Session session = sessionFactory.openSession()) {
+            books = session.createQuery("FROM Books", Books.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 
  /*   @Override

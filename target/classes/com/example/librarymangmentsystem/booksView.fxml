@@ -5,67 +5,40 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DAEBE3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookListController">
-    <children>
-        <Text fill="#657166" layoutX="197.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information Page">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Text>
-        <TableView editable="true" layoutX="39.0" layoutY="58.0" prefHeight="259.0" prefWidth="521.0" style="-fx-border-color: #657166; -fx-font-size: 14px;">
-            <columns>
-                <TableColumn prefWidth="87.199951171875" text="Book Name">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;
-                        -fx-alignment: CENTER;
-                    </style>
-                </TableColumn>
-                <TableColumn prefWidth="48.79998779296875" text="ID">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;
-                        -fx-alignment: CENTER;
-                    </style>
-                </TableColumn>
-                <TableColumn prefWidth="82.39996337890625" text="Author">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;
-                        -fx-alignment: CENTER;
-                    </style>
-                </TableColumn>
-                <TableColumn prefWidth="93.5999755859375" text="Genre">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;
-                        -fx-alignment: CENTER;
-                    </style>
-                </TableColumn>
-                <TableColumn prefWidth="114.4000244140625" text="Publication Year">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;
-                        -fx-alignment: CENTER;
-                    </style>
-                </TableColumn>
-                <TableColumn prefWidth="97.5999755859375" text="Availability">
-                    <style>
-                        -fx-background-color: #657166;
-                        -fx-text-fill: white;-fx-alignment: CENTER; -fx-text-fill: white;</style>
-                </TableColumn>
-            </columns>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TableView>
-        <Button layoutX="480.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Update" />
-        <Button layoutX="388.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="AV" />
-        <Button fx:id="back" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Back" />
-      <TextField layoutX="406.0" layoutY="24.0" promptText="Search" />
-    </children>
-</Pane>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookListController">
+
+    <!-- Title Text -->
+    <Text fx:id="infoTitle" fill="#657166" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Information Page" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="10.0" />
+
+    <!-- Search Field -->
+    <TextField fx:id="searchField" prefWidth="150.0" promptText="Search" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+
+    <!-- Table View -->
+    <TableView fx:id="booksTable" editable="true" style="-fx-border-color: #657166; -fx-font-size: 14px;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+        <columns>
+            <TableColumn fx:id="col1" prefWidth="100" text="Book Name" />
+            <TableColumn fx:id="col2" prefWidth="50" text="ID" />
+            <TableColumn fx:id="col3" prefWidth="100" text="Author" />
+            <TableColumn fx:id="col4" prefWidth="100" text="Genre" />
+            <TableColumn fx:id="col5" prefWidth="114.4000244140625" text="Publication Year" />
+            <TableColumn fx:id="col6" prefWidth="85.59988403320312" text="Availability" />
+        </columns>
+        <cursor>
+            <Cursor fx:constant="TEXT" />
+        </cursor>
+    </TableView>
+
+    <!-- Bottom Buttons (HBox for alignment) -->
+    <HBox spacing="10" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <Button fx:id="update" onAction="#onUpdateClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Update" />
+        <Button fx:id="done" onAction="#onDoneClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Save" />
+    </HBox>
+
+    <!-- Back Button -->
+    <Button fx:id="back" onAction="#backToHome" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Back" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+
+</AnchorPane>

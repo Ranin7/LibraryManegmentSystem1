@@ -1,22 +1,19 @@
 package com.example.librarymangmentsystem;
-
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 public class resetController {
-
-    @FXML
-    private void GoBack(ActionEvent event) {
+    public void handleResetPasswordClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Scene goback = new Scene(fxmlLoader.load());
-            Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            currentStage.setScene(goback);
+            Parent verificationRoot = FXMLLoader.load(getClass().getResource("Verification.fxml"));
+            Scene verificationScene = new Scene(verificationRoot);
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.setScene(verificationScene);
+            currentStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -10,6 +10,6 @@ public interface BookDOA {
     public void update(Books book);
     public void delete(int id);
     public Books getBook(int id);
-    public List<Books> getAll(Books book);
+    public List<Books> getAll();
     //public Books findBook(Books book);
 }
