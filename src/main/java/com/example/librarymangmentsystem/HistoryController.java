@@ -10,17 +10,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ViewDetailsController {
+public class HistoryController {
 
     @FXML
-    private Button backButton;
+    private Button back;
 
     @FXML
-    public void backToHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+    public void backToReservation(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
         Parent root = loader.load();
 
-        Stage stage = (Stage) backButton.getScene().getWindow();
+        Stage stage = (Stage) back.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 }

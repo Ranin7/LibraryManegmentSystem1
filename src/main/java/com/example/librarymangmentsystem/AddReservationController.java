@@ -19,7 +19,22 @@ public class AddReservationController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         Parent root = loader.load();
 
-        // Transition to the book list view
+        Stage stage = (Stage) back.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+    @FXML
+    public void GoReservations(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Reservations.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) back.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+    @FXML
+    public void GoHistory(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("History.fxml"));
+        Parent root = loader.load();
+
         Stage stage = (Stage) back.getScene().getWindow();
         stage.setScene(new Scene(root));
     }

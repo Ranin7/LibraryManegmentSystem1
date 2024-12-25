@@ -1,5 +1,4 @@
 module com.example.trysql {
-    requires javafx.controls;
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
@@ -9,6 +8,7 @@ module com.example.trysql {
     requires java.naming;
     requires mysql.connector.java;
     requires java.sql;
+    requires org.controlsfx.controls;
     opens com.example.librarymangmentsystem to javafx.fxml;
     opens com.example.librarymangmentsystem.models;
     exports com.example.librarymangmentsystem;
