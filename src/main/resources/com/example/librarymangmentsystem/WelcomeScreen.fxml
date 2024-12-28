@@ -27,7 +27,7 @@
             <Blend />
          </effect>
         </ImageView>
-        <Button mnemonicParsing="false" onAction="#GoHome" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3">
+        <Button fx:id="userButton" mnemonicParsing="false" onAction="#GoHome" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>

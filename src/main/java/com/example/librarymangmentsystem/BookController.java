@@ -1,6 +1,7 @@
 package com.example.librarymangmentsystem;
 
 import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Role;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +29,9 @@ public class BookController {
     @FXML
     private CheckBox avalibl;
 
+
+
+
     @FXML
     public void showAllBooks(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("booksView.fxml"));
@@ -46,26 +50,27 @@ public class BookController {
 
     @FXML
     public void addBook(ActionEvent event) {
-        String name = txtname.getText();
-        String author = txtauther.getText();
-        String genre = txtgenre.getText();
-        LocalDate publicationDate = txtpublication.getValue();
-        String publication = (publicationDate != null) ? publicationDate.toString() : "";
 
-        Books book = new Books();
-        book.setBookName(name);
-        book.setAuthor(author);
-        book.setGenre(genre);
-        book.setPublicationYear(publication);
-        book.setAvailable(avalibl.isSelected() ? "Yes" : "No");
+            String name = txtname.getText();
+            String author = txtauther.getText();
+            String genre = txtgenre.getText();
+            LocalDate publicationDate = txtpublication.getValue();
+            String publication = (publicationDate != null) ? publicationDate.toString() : "";
 
-        BookDOAImp bookDOA = new BookDOAImp();
-        bookDOA.save(book);
+            Books book = new Books();
+            book.setBookName(name);
+            book.setAuthor(author);
+            book.setGenre(genre);
+            book.setPublicationYear(publication);
+            book.setAvailable(avalibl.isSelected() ? "Yes" : "No");
 
-        txtname.clear();
-        txtauther.clear();
-        txtgenre.clear();
-        txtpublication.setValue(null);
-    }
+            BookDOAImp bookDOA = new BookDOAImp();
+            bookDOA.save(book);
+
+            txtname.clear();
+            txtauther.clear();
+            txtgenre.clear();
+            txtpublication.setValue(null);
+        }
 
 }
