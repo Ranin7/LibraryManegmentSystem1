@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 public class WelcomeScreenController {
     @FXML
-    private Button librarianButton; //
+    private Button librarianButton;
     @FXML
     private void handleLibrarianButton() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
@@ -19,7 +19,7 @@ public class WelcomeScreenController {
     }
     @FXML
     private void GoHome() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("allBooks.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) librarianButton.getScene().getWindow();
         stage.setTitle("Login!");

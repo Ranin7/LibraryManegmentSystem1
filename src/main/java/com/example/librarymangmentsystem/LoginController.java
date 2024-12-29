@@ -21,7 +21,7 @@ public class LoginController {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);

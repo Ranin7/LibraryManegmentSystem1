@@ -17,7 +17,7 @@ public class ViewDetailsController {
 
     @FXML
     public void backToHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AllBooks.fxml"));
         Parent root = loader.load();
 
         Stage stage = (Stage) backButton.getScene().getWindow();

@@ -17,7 +17,7 @@ public class HistoryController {
 
     @FXML
     public void backToReservation(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         Parent root = loader.load();
 
         Stage stage = (Stage) back.getScene().getWindow();

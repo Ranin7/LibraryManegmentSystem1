@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookListController">
+<AnchorPane prefHeight="400.0" prefWidth="730.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookListController">
 
     <!-- Title Text -->
-    <Text fx:id="infoTitle" fill="#657166" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Information Page" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="10.0" />
+    <Text fx:id="infoTitle" fill="#657166" layoutX="288.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Information Page" AnchorPane.leftAnchor="288.0" AnchorPane.topAnchor="14.41796875" />
 
     <!-- Search Field -->
-    <TextField fx:id="searchField" prefWidth="150.0" promptText="Search" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+    <TextField fx:id="searchField" layoutX="500.0" prefHeight="26.0" prefWidth="188.0" promptText="Search" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="15.0" />
 
     <!-- Table View -->
-    <TableView fx:id="booksTable" editable="true" style="-fx-border-color: #657166; -fx-font-size: 14px;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+    <TableView fx:id="booksTable" editable="true" layoutX="54.0" layoutY="51.0" prefHeight="270.0" prefWidth="583.0" style="-fx-border-color: #657166; -fx-font-size: 14px;" AnchorPane.bottomAnchor="79.39999999999998" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="43.59999999999991" AnchorPane.topAnchor="51.0">
         <columns>
             <TableColumn fx:id="col1" prefWidth="100" text="Book Name" />
             <TableColumn fx:id="col2" prefWidth="50" text="ID" />
@@ -26,6 +26,7 @@
             <TableColumn fx:id="col4" prefWidth="100" text="Genre" />
             <TableColumn fx:id="col5" prefWidth="114.4000244140625" text="Publication Year" />
             <TableColumn fx:id="col6" prefWidth="85.59988403320312" text="Availability" />
+            <TableColumn fx:id="col7" prefWidth="75.0" text="image" />
         </columns>
         <cursor>
             <Cursor fx:constant="TEXT" />
@@ -33,7 +34,7 @@
     </TableView>
 
     <!-- Bottom Buttons (HBox for alignment) -->
-    <HBox spacing="10" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+    <HBox layoutX="516.0" layoutY="354.0" spacing="10" AnchorPane.bottomAnchor="20.399999999999977" AnchorPane.rightAnchor="53.200000000000045">
         <Button fx:id="update" onAction="#onUpdateClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Update" />
         <Button fx:id="done" onAction="#onDoneClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #657166; -fx-text-fill: white;" text="Save" />
     </HBox>
