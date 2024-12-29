@@ -1,25 +1,33 @@
 package com.example.librarymangmentsystem.models;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="Books")
+@Table(name = "books")
 public class Books {
 
-    @Column(name= "BookName")
+    @Column(name = "BookName")
     private String bookName;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="Author")
+    @Column(name = "Author")
     private String author;
 
-    @Column(name="Genre")
+    @Lob
+    @Column(name = "Image", columnDefinition = "BLOB")
+    private byte[] image;
+
+    @Column(name = "Genre")
     private String genre;
 
-    @Column(name="Available")
+    @Column(name = "Available")
     private String available;
+
+    @Column(name = "PublicationYear")
+    private String publicationYear;
 
     public String getBookName() {
         return bookName;
@@ -45,6 +53,14 @@ public class Books {
         this.author = author;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     public String getGenre() {
         return genre;
     }
@@ -68,9 +84,14 @@ public class Books {
     public void setPublicationYear(String publicationYear) {
         this.publicationYear = publicationYear;
     }
+    private String imagePath;
 
-    @Column(name= "PublicationYear")
-    private String publicationYear;
+    public String getImagePath() {
+        return imagePath;
+    }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
 }

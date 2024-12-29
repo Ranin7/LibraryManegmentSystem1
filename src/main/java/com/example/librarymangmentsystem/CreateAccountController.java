@@ -15,7 +15,7 @@ public class CreateAccountController {
     private Button back;
     @FXML
     public void goToHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         Parent root = loader.load();
 
         // Transition to the book list view

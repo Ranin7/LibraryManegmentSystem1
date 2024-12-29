@@ -10,10 +10,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomeController {
+public class DashboardController {
+
     @FXML
     private Button addBookB;
 
+    @FXML
+    public void AllBooks(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AllBooks.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) addBookB.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
     @FXML
     public void AddBooks(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("addBook.fxml"));
@@ -23,14 +32,7 @@ public class HomeController {
         stage.setScene(new Scene(root));
     }
 
-    @FXML
-    public void viewDetails(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDetails.fxml"));
-        Parent root = loader.load();
 
-        Stage stage = (Stage) addBookB.getScene().getWindow();
-        stage.setScene(new Scene(root));
-    }
 
     @FXML
     public void goToBooksView(ActionEvent event) throws IOException {
@@ -62,12 +64,31 @@ public void goToAddReservation(ActionEvent event) throws IOException {
         Stage stage = (Stage) addBookB.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
+    @FXML
+    public void goToHistory(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("History.fxml"));
+        Parent root = loader.load();
+
+        // Transition to the book list view
+        Stage stage = (Stage) addBookB.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+
     @FXML
     public void goToCreateAccount(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("createAccount.fxml"));
         Parent root = loader.load();
 
         // Transition to the book list view
+        Stage stage = (Stage) addBookB.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+    @FXML
+    public void Logout(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WelcomeScreen.fxml"));
+        Parent root = loader.load();
+
         Stage stage = (Stage) addBookB.getScene().getWindow();
         stage.setScene(new Scene(root));
     }

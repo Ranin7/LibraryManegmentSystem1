@@ -8,14 +8,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DAEBE3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #DAEBE3, #FFFFFF);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookController">
     <children>
+      <Text layoutX="405.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to add photo" textAlignment="CENTER" wrappingWidth="59.922607421875" />
         <!-- Sidebar -->
-        <AnchorPane prefWidth="200.0" style="-fx-background-color: #657166;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #657166, #4B5448);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Text fill="#FFFFFF" layoutX="42.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bookly" wrappingWidth="136.80000000000007" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="106.0">
                     <font>
@@ -23,17 +25,16 @@
                     </font>
                 </Text>
 
-                <ImageView fitHeight="150.0" fitWidth="129.0" layoutX="42.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="149.0">
+                <ImageView fitHeight="150.0" fitWidth="129.0" layoutX="35.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="149.0">
                     <clip>
                         <Rectangle arcHeight="20.0" arcWidth="20.0" height="170.0" width="103.0" />
                     </clip>
                     <image>
-                        <Image url="https://i.pinimg.com/736x/cf/68/e0/cf68e073db8872869034a004ee4b16bd.jpg" />
+                        <Image url="https://iarwa88.wordpress.com/wp-content/uploads/2013/02/books.gif" />
                     </image>
                 </ImageView>
 
-
-                <Button fx:id="back1" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#showHomePage" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold;" text="back" textFill="#FFFFFF">
+                <Button fx:id="back1" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#showHomePage" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="back" textFill="#FFFFFF">
                     <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                     </font>
@@ -42,68 +43,76 @@
         </AnchorPane>
 
         <!-- Form Section -->
-        <Label text="Add New Book" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="20.0">
+        <Label style="-fx-font-weight: bold; -fx-font-style: italic;" text="Add New Book" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="20.0">
             <font>
                 <Font name="Segoe UI Semibold" size="20.0" />
             </font>
         </Label>
 
-        <TextField fx:id="txtname" promptText="Book Name" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+        <TextField fx:id="txtname" promptText="Book Name" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-style: italic;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
         </TextField>
-        <Label text="Book Name" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="60.0">
+        <Label style="-fx-font-weight: bold; -fx-font-style: italic;" text="Book Name" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="60.0">
             <font>
                 <Font name="Segoe UI Semibold" size="14.0" />
             </font>
         </Label>
 
-        <TextField fx:id="txtauther" layoutX="220.0" layoutY="146.0" promptText="Author" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="146.0">
+        <TextField fx:id="txtauther" layoutX="220.0" layoutY="146.0" promptText="Author" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-style: italic;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="146.0">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="220.0" layoutY="126.0" text="Author" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="126.0">
+        <Label layoutX="220.0" layoutY="126.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Author" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="126.0">
             <font>
                 <Font name="Segoe UI Semibold" size="14.0" />
             </font>
         </Label>
 
-        <TextField fx:id="txtgenre" layoutX="220.0" layoutY="210.0" promptText="Genre" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="210.0">
+        <TextField fx:id="txtgenre" layoutX="220.0" layoutY="210.0" promptText="Genre" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-style: italic;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="210.0">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="220.0" layoutY="190.0" text="Genre" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="190.0">
+        <Label layoutX="220.0" layoutY="190.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Genre" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="190.0">
             <font>
                 <Font name="Segoe UI Semibold" size="14.0" />
             </font>
         </Label>
 
-        <Label layoutX="220.0" layoutY="252.0" text="Publication Year" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="252.0">
+        <Label layoutX="220.0" layoutY="252.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Publication Year" textFill="#434141" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="252.0">
             <font>
                 <Font name="Segoe UI Semibold" size="14.0" />
             </font>
         </Label>
 
-        <DatePicker fx:id="txtpublication" layoutX="220.0" layoutY="272.0" promptText="Publication Year" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="272.0" />
+        <DatePicker fx:id="txtpublication" layoutX="220.0" layoutY="272.0" promptText="Publication Year" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-color: #657166; -fx-border-width: 2; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-style: italic;" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="272.0" />
 
-        <CheckBox fx:id="avalibl" layoutX="224.0" layoutY="310.0" prefHeight="33.0" prefWidth="129.0" style="-fx-background-color: transparent;            -fx-border-color: #657166;            -fx-border-radius: 12;            -fx-font-family: Segoe UI Bold;            -fx-font-size: 14px;            -fx-padding: 5 15 5 5;" text="Availability" textFill="#434141" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="247.2" AnchorPane.topAnchor="310.0" />
+        <CheckBox fx:id="avalibl" layoutX="224.0" layoutY="310.0" prefHeight="33.0" prefWidth="129.0" style="-fx-background-color: transparent;            -fx-border-color: #657166;-fx-font-weight: bold; -fx-font-style: italic;            -fx-border-radius: 12;            -fx-font-family: Segoe UI Bold;            -fx-font-size: 14px;            -fx-padding: 5 15 5 5;" text="Availability" textFill="#434141" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="247.2" AnchorPane.topAnchor="310.0" />
 
 
         <!-- Buttons -->
-        <Button fx:id="book" layoutX="385.0" layoutY="356.0" onAction="#addBook" style="-fx-background-color: #657166; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold;" text="Add Book" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="135.0">
+        <Button fx:id="book" layoutX="385.0" layoutY="400.0" onAction="#addBook" style="-fx-background-color: #657166; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="Add Book" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="135.0">
             <font>
                 <Font name="Segoe UI Bold" size="14.0" />
             </font>
         </Button>
 
-        <Button fx:id="groupbook" layoutX="457.0" layoutY="349.0" onAction="#showAllBooks" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold;" text="Show All Books" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.rightAnchor="14.200000000000045">
+        <Button fx:id="groupbook" layoutX="457.0" layoutY="500.0" onAction="#showAllBooks" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="Show All Books" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.rightAnchor="14.200000000000045">
             <font>
                 <Font name="Segoe UI Bold" size="14.0" />
             </font>
         </Button>
+        <ImageView fx:id="imageView" fitHeight="51.0" fitWidth="120.0" layoutX="375.0" layoutY="14.0" onMouseClicked="#handleImageUpload" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="16.79998779296875" endY="2.86102294921875E-6" layoutX="476.0" layoutY="13.0" startX="-100.0" />
+      <Line endX="-111.0" endY="43.99998474121094" layoutX="486.0" layoutY="23.0" startX="-111.0" startY="-8.99999713897705" />
+      <Line endX="9.0" endY="52.99998474121094" layoutX="485.0" layoutY="14.0" startX="-109.5" startY="52.99998474121094" />
+      <Line endX="8.5" endY="43.49998474121094" layoutX="486.0" layoutY="23.0" startX="7.507080078125" startY="-9.292889595031738" />
+
+
 
     </children>
 </AnchorPane>
