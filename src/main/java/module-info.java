@@ -9,6 +9,7 @@ module com.example.trysql {
     requires mysql.connector.java;
     requires java.sql;
     requires org.controlsfx.controls;
+    requires java.desktop;
     opens com.example.librarymangmentsystem to javafx.fxml;
     opens com.example.librarymangmentsystem.models;
     exports com.example.librarymangmentsystem;

@@ -7,5 +7,7 @@ create table books
     Genre           varchar(200) null,
     Available       varchar(200) null,
     PublicationYear date         null,
-    image           blob         null
+    image           longblob     null,
+    imagePath       varchar(255) null
 );
+
