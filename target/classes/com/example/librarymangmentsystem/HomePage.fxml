@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.allBooksController">
+    <children>
+        <!-- Search Field and Buttons -->
+        <HBox spacing="10" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <TextField fx:id="searchField" promptText="What would you like to read?" HBox.hgrow="ALWAYS" />
+            <Button onAction="#goDashboard" style="-fx-background-color: #657166;" text="Back" textFill="WHITE" />
+        </HBox>
+
+        <!-- Center Content -->
+        <VBox alignment="CENTER" layoutY="67.0" prefHeight="323.0" prefWidth="580.0" spacing="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="67.0">
+            <HBox alignment="CENTER" prefWidth="579.0" spacing="20">
+                <!-- First Book Panel -->
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@home1.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text layoutX="100.0" layoutY="30.0" text="The Truth About Animals" wrappingWidth="160.0">
+                            <font>
+                                <Font name="System Bold Italic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Button fx:id="allBook" layoutX="100.0" layoutY="70.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+
+                <!-- Second Book Panel -->
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Home2.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text layoutX="100.0" layoutY="30.0" text="Mammals" wrappingWidth="160.0">
+                            <font>
+                                <Font name="System Bold Italic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="100.0" layoutY="70.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="20">
+                <!-- Third Book Panel -->
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Home3.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text layoutX="100.0" layoutY="30.0" text="Animal Books For Kids" wrappingWidth="160.0">
+                            <font>
+                                <Font name="System Bold Italic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="100.0" layoutY="70.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+
+                <!-- Fourth Book Panel -->
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #FDE8D3;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Home4.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text layoutX="100.0" layoutY="30.0" text="Animal Rights Law" wrappingWidth="160.0">
+                            <font>
+                                <Font name="System Bold Italic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="100.0" layoutY="70.0" mnemonicParsing="false" onAction="#viewDetails" style="-fx-background-color: #CFD6C4;" text="View Details" textFill="WHITE">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </HBox>
+        </VBox>
+        <VBox alignment="TOP_CENTER" layoutX="29.0" layoutY="41.0" prefHeight="161.0" prefWidth="133.0" spacing="10.0" AnchorPane.leftAnchor="29.0" VBox.Vgrow="ALWAYS">
+            <children>
+                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="22.0" prefWidth="134.0" style="-fx-background-color: #FDE8D3;" text="Filter ▼" textFill="#657166" />
+                <VBox prefHeight="200.0" prefWidth="100.0" visible="false">
+                    <children>
+                        <ComboBox fx:id="genreComboBox" prefWidth="150.0" promptText="Genre" style="-fx-background-color: #FDE8D3;" />
+                        <ComboBox fx:id="authorComboBox" prefWidth="150.0" promptText="Author" style="-fx-background-color: #FDE8D3;" />
+                        <ComboBox fx:id="languageComboBox" prefWidth="150.0" promptText="Language" style="-fx-background-color: #FDE8D3;" />
+                        <ComboBox fx:id="publisherYearComboBox" prefWidth="150.0" promptText="Publication Year" style="-fx-background-color: #FDE8D3;" />
+                        <ComboBox fx:id="availabilityStatusComboBox" prefWidth="150.0" promptText="Availability Status" style="-fx-background-color: #FDE8D3;" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
