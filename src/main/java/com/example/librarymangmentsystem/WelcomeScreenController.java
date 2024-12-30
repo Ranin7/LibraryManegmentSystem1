@@ -24,7 +24,7 @@ public class WelcomeScreenController {
 
     @FXML
     private void GoHome() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AllBooks.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) librarianButton.getScene().getWindow();
         stage.setTitle("Home Page");
