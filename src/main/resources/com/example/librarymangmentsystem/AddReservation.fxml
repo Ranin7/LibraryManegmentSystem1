@@ -42,8 +42,8 @@
                     </columns>
                 </TableView>
                 <TextField prefHeight="26.0" promptText="Search" style="-fx-background-radius: 1200;" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="14.0" />
-                <Button fx:id="back" layoutX="78.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoReservations" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="Reservations " textFill="WHITE" AnchorPane.bottomAnchor="41.39999999999998" AnchorPane.leftAnchor="78.0" />
-            <Button fx:id="back1" layoutX="185.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoHistory" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="History" textFill="WHITE" />
+                <Button fx:id="reservation" layoutX="78.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoReservations" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="Reservations " textFill="WHITE" AnchorPane.bottomAnchor="41.39999999999998" AnchorPane.leftAnchor="78.0" />
+            <Button fx:id="history" layoutX="185.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoHistory" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="History" textFill="WHITE" />
             </children>
         </AnchorPane>
     </children>
