@@ -4,6 +4,7 @@ create table users
         primary key,
     username varchar(255) not null,
     password varchar(255) not null,
+    email varchar(255) not null unique,
     role_id  int          null,
     constraint users_ibfk_1
         foreign key (role_id) references roles (role_id)
