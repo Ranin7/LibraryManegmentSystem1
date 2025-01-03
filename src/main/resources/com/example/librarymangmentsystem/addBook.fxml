@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #DAEBE3, #FFFFFF);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.BookController">
     <children>
-      <Text layoutX="405.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to add photo" textAlignment="CENTER" wrappingWidth="59.922607421875" />
+        <Text layoutX="405.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to add photo" textAlignment="CENTER" wrappingWidth="59.922607421875" />
         <!-- Sidebar -->
         <AnchorPane prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #657166, #4B5448);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -107,10 +107,10 @@
             </font>
         </Button>
         <ImageView fx:id="imageView" fitHeight="51.0" fitWidth="120.0" layoutX="375.0" layoutY="14.0" onMouseClicked="#handleImageUpload" pickOnBounds="true" preserveRatio="true" />
-      <Line endX="16.79998779296875" endY="2.86102294921875E-6" layoutX="476.0" layoutY="13.0" startX="-100.0" />
-      <Line endX="-111.0" endY="43.99998474121094" layoutX="486.0" layoutY="23.0" startX="-111.0" startY="-8.99999713897705" />
-      <Line endX="9.0" endY="52.99998474121094" layoutX="485.0" layoutY="14.0" startX="-109.5" startY="52.99998474121094" />
-      <Line endX="8.5" endY="43.49998474121094" layoutX="486.0" layoutY="23.0" startX="7.507080078125" startY="-9.292889595031738" />
+        <Line endX="16.79998779296875" endY="2.86102294921875E-6" layoutX="476.0" layoutY="13.0" startX="-100.0" />
+        <Line endX="-111.0" endY="43.99998474121094" layoutX="486.0" layoutY="23.0" startX="-111.0" startY="-8.99999713897705" />
+        <Line endX="9.0" endY="52.99998474121094" layoutX="485.0" layoutY="14.0" startX="-109.5" startY="52.99998474121094" />
+        <Line endX="8.5" endY="43.49998474121094" layoutX="486.0" layoutY="23.0" startX="7.507080078125" startY="-9.292889595031738" />
 
 
 
