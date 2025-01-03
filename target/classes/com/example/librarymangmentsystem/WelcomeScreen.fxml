@@ -7,27 +7,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.WelcomeScreenController">
     <children>
-        <ImageView fx:id="imageView" fitHeight="148.0" fitWidth="483.0" layoutX="-1.6" layoutY="91.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #efefef;">
-           <!-- <image>
-                <Image url="@neww.png" />
-            </image>-->
-            <AnchorPane.topAnchor>91.0</AnchorPane.topAnchor>
-            <AnchorPane.leftAnchor>-2.0</AnchorPane.leftAnchor>
-            <AnchorPane.rightAnchor>119.0</AnchorPane.rightAnchor>
-            <AnchorPane.bottomAnchor>161.0</AnchorPane.bottomAnchor>
-         <image>
-            <Image url="@bookly.png" />
-         </image>
-         <effect>
-            <Blend />
-         </effect>
-        </ImageView>
-        <Button fx:id="userButton" mnemonicParsing="false" onAction="#GoHome" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3">
+        <Button fx:id="userButton" layoutX="234.0" layoutY="251.0" mnemonicParsing="false" onAction="#GoHome" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="234.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -42,10 +29,8 @@
                     </topInput>
                 </Blend>
             </effect>
-            <AnchorPane.leftAnchor>100.0</AnchorPane.leftAnchor>
-            <AnchorPane.bottomAnchor>50.0</AnchorPane.bottomAnchor>
         </Button>
-        <Button fx:id="librarianButton" mnemonicParsing="false" onAction="#handleLibrarianButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Librarian" textFill="#fde8d3">
+        <Button fx:id="librarianButton" layoutX="440.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleLibrarianButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Librarian" textFill="#fde8d3" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="14.399999999999977">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -60,24 +45,40 @@
                     </topInput>
                 </Blend>
             </effect>
-            <AnchorPane.rightAnchor>100.0</AnchorPane.rightAnchor>
-            <AnchorPane.bottomAnchor>50.0</AnchorPane.bottomAnchor>
         </Button>
-        <Label alignment="CENTER" style="-fx-text-fill: #000000;" text="Welcome to Bookly!">
+        <Label alignment="CENTER" layoutX="275.0" layoutY="45.0" prefHeight="42.0" prefWidth="272.0" style="-fx-text-fill: #000000;" text="Welcome to Bookly!" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="53.799999999999955" AnchorPane.topAnchor="45.0">
             <font>
-                <Font name="Arial Rounded MT Bold" size="14.0" />
+                <Font name="Arial Rounded MT Bold" size="27.0" />
             </font>
-            <AnchorPane.topAnchor>14.0</AnchorPane.topAnchor>
-            <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
-            <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
         </Label>
-        <Label alignment="CENTER" style="-fx-text-fill: #000000;" text="Explore a world of knowledge and books at your fingertips. Enjoy a unique reading experience" wrapText="true">
+        <Label alignment="CENTER" layoutX="233.0" layoutY="121.0" prefHeight="15.0" prefWidth="356.0" style="-fx-text-fill: #000000;" text="Explore a world of knowledge and books at your fingertips. " wrapText="true" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="11.799999999999955" AnchorPane.topAnchor="121.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="12.0" />
             </font>
-            <AnchorPane.topAnchor>51.0</AnchorPane.topAnchor>
-            <AnchorPane.leftAnchor>19.0</AnchorPane.leftAnchor>
-            <AnchorPane.rightAnchor>19.0</AnchorPane.rightAnchor>
+        </Label>
+        <Pane prefHeight="400.0" prefWidth="223.0" style="-fx-background-color: #657166;">
+            <children>
+                <Circle fill="DODGERBLUE" layoutX="114.0" layoutY="186.0" opacity="0.94" radius="100.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #efefef;" />
+                <Label layoutX="23.0" layoutY="335.0" text="Enjoy a unique reading experience" textFill="#fde8d3">
+                    <effect>
+                        <Blend>
+                            <topInput>
+                                <DropShadow />
+                            </topInput>
+                        </Blend>
+                    </effect>
+                </Label>
+                <ImageView fitHeight="228.0" fitWidth="169.0" layoutX="50.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Label layoutX="397.0" layoutY="279.0" rotate="-39.0" text="OR">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="33.0" />
+            </font>
         </Label>
     </children>
 </AnchorPane>

@@ -12,6 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.LoginController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +47,7 @@
             <AnchorPane.leftAnchor>168.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>168.0</AnchorPane.rightAnchor>
         </Label>
-        <Button layoutX="168.0" layoutY="279.0" mnemonicParsing="false" onAction="#GoHomePage" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: #657166; -fx-background-radius: 4;" text="Login" textFill="#fde8d3">
+        <Button layoutX="168.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: #657166; -fx-background-radius: 4;" text="Login" textFill="#fde8d3">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -77,17 +78,17 @@
             <AnchorPane.topAnchor>170.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>168.0</AnchorPane.leftAnchor>
         </Label>
-        <TextField layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
+        <TextField fx:id="userNameField" layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
             <AnchorPane.topAnchor>126.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
         </TextField>
-        <TextField layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
+        <PasswordField fx:id="passwordField" layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
             <AnchorPane.topAnchor>188.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
-        </TextField>
-        <Button layoutX="329.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleForgotPasswordClick" style="-fx-background-color: #efefef;" text="Forget Password?">
+        </PasswordField >
+        <Button layoutX="329.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: #efefef;" text="Forget Password?">
             <AnchorPane.topAnchor>240.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>329.0</AnchorPane.leftAnchor>
         </Button>
