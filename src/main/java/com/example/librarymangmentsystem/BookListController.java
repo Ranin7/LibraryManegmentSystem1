@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem;
 
 import com.example.librarymangmentsystem.models.Books;
-import com.example.librarymangmentsystem.models.services.BookDOAImp;  // Corrected class name
+import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +20,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import javafx.scene.control.TextField;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
@@ -40,22 +42,22 @@ public class BookListController {
     private TableColumn<Books, String> col5;
     @FXML
     private TableColumn<Books, Boolean> col6;
-
     @FXML
     private TableColumn<Books, byte[]> col7;
+
     @FXML
     private Button back;
-
     @FXML
     private Button update;
-
     @FXML
     private Button done;
+
+    @FXML
+    private TextField searchField;
 
     private ObservableList<Books> booksList;
     private boolean isEditingAllowed = false;
     private ObservableList<Books> modifiedBooks = FXCollections.observableArrayList();
-
 
     // Back to home page
     @FXML
@@ -83,9 +85,7 @@ public class BookListController {
         col5.setCellValueFactory(new PropertyValueFactory<>("publicationYear"));
 
         // Initialize availability column to display "Yes" or "No"
-        col6.setCellValueFactory(cellData ->
-                new SimpleBooleanProperty(cellData.getValue().getAvailable().equalsIgnoreCase("Yes")).asObject()
-        );
+        col6.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getAvailable().equalsIgnoreCase("Yes")).asObject());
 
         col6.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Boolean>() {
             @Override
@@ -110,14 +110,15 @@ public class BookListController {
         col6.setOnEditCommit(event -> {
             Books book = event.getRowValue();
             String newValue = event.getNewValue() ? "Yes" : "No";
-            book.setAvailable(newValue); // تحديث قيمة التوافر
+            book.setAvailable(newValue); // Update availability
 
             if (!modifiedBooks.contains(book)) {
-                modifiedBooks.add(book); // إضافة الكتاب إلى قائمة التعديلات
+                modifiedBooks.add(book); // Add book to modified list
             }
 
             System.out.println("Availability updated to: " + newValue);
         });
+
         col7.setCellValueFactory(new PropertyValueFactory<>("image"));
         col7.setCellFactory(param -> new TableCell<Books, byte[]>() {
             @Override
@@ -127,7 +128,7 @@ public class BookListController {
                     try {
                         Image image = new Image(new ByteArrayInputStream(item));
                         ImageView imageView = new ImageView(image);
-                        imageView.setFitHeight(50); // حجم الصورة
+                        imageView.setFitHeight(50); // Image size
                         imageView.setFitWidth(50);
                         setGraphic(imageView);
                     } catch (Exception e) {
@@ -140,7 +141,24 @@ public class BookListController {
                 }
             }
         });
+
+        // Add listener to search field to filter the TableView
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterBooks(newValue));
+
         loadBooks();
+    }
+
+    private void filterBooks(String searchText) {
+        ObservableList<Books> filteredList = FXCollections.observableArrayList();
+        for (Books book : booksList) {
+            if (book.getBookName().toLowerCase().contains(searchText.toLowerCase()) ||
+                    book.getAuthor().toLowerCase().contains(searchText.toLowerCase()) ||
+                    book.getGenre().toLowerCase().contains(searchText.toLowerCase()) ||
+                    book.getPublicationYear().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(book);
+            }
+        }
+        booksTable.setItems(filteredList);
     }
 
     public void onUpdateClicked(ActionEvent event) {
@@ -159,14 +177,14 @@ public class BookListController {
             case "author":
                 book.setAuthor((String) newValue);
                 break;
-                case "genre":
-                    book.setGenre((String) newValue);
-                    break;
-                    case "publicationYear":
-                        book.setPublicationYear((String) newValue);
-                        break;
-                        default:
-                            break;
+            case "genre":
+                book.setGenre((String) newValue);
+                break;
+            case "publicationYear":
+                book.setPublicationYear((String) newValue);
+                break;
+            default:
+                break;
         }
         if (!modifiedBooks.contains(book)) {
             modifiedBooks.add(book);
@@ -174,6 +192,7 @@ public class BookListController {
 
         System.out.println("Updated " + property + ": " + newValue);
     }
+
     @FXML
     public void onDoneClicked(ActionEvent event) {
         if (!isEditingAllowed) {
@@ -196,9 +215,4 @@ public class BookListController {
         booksTable.setEditable(false);
         System.out.println("All changes have been saved.");
     }
-
-
-    }
-
-
-
+}

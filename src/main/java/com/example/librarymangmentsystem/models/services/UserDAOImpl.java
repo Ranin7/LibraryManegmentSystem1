@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
     public Role.User getUserByUsername(String username) {
         Role.User user = null;
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarydb", "root", "201224");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarydb", "root", "Group3_123");
             String query = "SELECT * FROM users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);

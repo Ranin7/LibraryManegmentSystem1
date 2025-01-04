@@ -1,6 +1,7 @@
 package com.example.librarymangmentsystem.models;
 
 public class Role {
+    public static Role.User User;
     private String roleName;
 
     public Role(String roleName) {
@@ -29,6 +30,10 @@ public class Role {
             this.password = password;
             this.role = role;
         }
+
+        public User() {
+        }
+
         public String getUsername() {
             return username;
         }
@@ -51,6 +56,10 @@ public class Role {
 
         public void setRole(String role) {
             this.role = role;
+        }
+
+
+        public void setUseri(int i) {
         }
     }
 }
