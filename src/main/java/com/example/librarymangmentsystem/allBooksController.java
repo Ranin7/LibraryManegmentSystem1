@@ -1,5 +1,5 @@
 package com.example.librarymangmentsystem;
-
+//commenttest
 import com.example.librarymangmentsystem.models.Books;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.beans.value.ObservableValue;
@@ -11,22 +11,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.ByteArrayInputStream;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.io.ByteArrayInputStream;
+import javafx.scene.text.Text;
+
 
 public class allBooksController {
-
     @FXML
     private Button allBook;
+
+    @FXML
+    public void viewDetails(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDetails.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) allBook.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void goDashboard(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) allBook.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
 
     @FXML
     private TextField searchField;
@@ -35,9 +64,55 @@ public class allBooksController {
     private VBox booksContainer;
 
     @FXML
-    private ListView<String> searchSuggestions; // New ListView for predictive suggestions
+    private VBox filterVBox;
+    @FXML
+    private ComboBox<String> genreComboBox;
 
-    private ObservableList<Books> booksList;
+    @FXML
+    private ComboBox<String> authorComboBox;
+
+    @FXML
+    private ComboBox<String> publisherYearComboBox;
+
+    @FXML
+    private ComboBox<String> availabilityStatusComboBox;
+
+    @FXML
+    private Button filterButton;
+
+    @FXML
+    private TableView<String> bookTableView;
+
+    @FXML
+    private TableColumn<Book, String> authorColumn;
+
+    @FXML
+    private TableColumn<Book, String> genreColumn;
+
+    @FXML
+    private TableColumn<Book, String> publisherYearColumn;
+
+    @FXML
+    private TableColumn<Book, String> availabilityStatusColumn;
+
+    private String SelectedGenre = "All";
+    private String SelectedAuthor = "All";
+    private String SelectedPublisherYear = "All";
+    private String SelectedAvailabilityStatus = "All";
+
+
+    private final ObservableList<Books> bookList = FXCollections.observableArrayList();
+    private SessionFactory sessionFactory;
+
+    @FXML
+    private ListView<String> searchSuggestions;// New ListView for predictive suggestions
+
+    @FXML
+    private ListView<String> filteredSuggestions;
+
+    private final ObservableList<Books> booksList;
+    private ObservableList<Books> filteredBooks;
+
 
     private BookDOAImp bookDAO;
 
@@ -46,18 +121,21 @@ public class allBooksController {
         booksList = FXCollections.observableArrayList(bookDAO.getAll());
     }
 
+
     @FXML
     public void initialize() {
-        // Initial population of books
+        setupTableView();
+        loadFilterOptions();
+        setupHibernate();
+        loadAllBooks();
         displayBooks(booksList);
+        displayFilterBooks(bookList);
 
-        // Add listener for real-time search with predictive suggestions
         searchField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             searchBook(newValue);
             updateSearchSuggestions(newValue);
         });
 
-        // Handle suggestion click
         searchSuggestions.setOnMouseClicked(event -> {
             String selectedSuggestion = searchSuggestions.getSelectionModel().getSelectedItem();
             if (selectedSuggestion != null) {
@@ -66,11 +144,141 @@ public class allBooksController {
                 searchSuggestions.setVisible(false); // Hide suggestions after selection
             }
         });
+
+
+
+
+
+        genreComboBox.setOnAction(e -> applyFilters());
+        authorComboBox.setOnAction(e -> applyFilters());
+        publisherYearComboBox.setOnAction(e -> applyFilters());
+        availabilityStatusComboBox.setOnAction(e -> applyFilters());
+
+        filterButton.setOnAction(e -> toggleFilterOptions());
+
+
+        if (filterVBox != null) {
+            filterVBox.setVisible(false);
+            filterVBox.setManaged(false);
+        }
     }
 
-    /**
-     * Display books in VBox dynamically.
-     */
+    @FXML
+    private void toggleFilterOptions() {
+        System.out.println("Filter button clicked!");
+        if (filterVBox != null) {
+            boolean isVisible = filterVBox.isVisible();
+            filterVBox.setVisible(!isVisible);
+            filterVBox.setManaged(!isVisible);
+
+            filterButton.setText(isVisible ? "Filter ▼" : "Filter ▲");
+
+            if (!isVisible){
+                applyFilters();
+            }
+        }
+    }
+
+    private void setupTableView() {
+        if (authorColumn != null) {
+            authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        }
+        if (genreColumn != null) {
+            genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        }
+        if (publisherYearColumn != null) {
+            publisherYearColumn.setCellValueFactory(new PropertyValueFactory<>("publisherYear"));
+        }
+        if (availabilityStatusColumn != null) {
+            availabilityStatusColumn.setCellValueFactory(new PropertyValueFactory<>("availabilityStatus"));
+        }
+        if (bookTableView != null) {
+            bookTableView.setItems(FXCollections.observableArrayList(""));
+        }
+    }
+
+    private void loadFilterOptions() {
+        if (genreComboBox != null) {
+            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "History","Novel","Psychology","Political", "Children's Stories"));
+        }
+        if (authorComboBox != null) {
+            authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover"));
+        }
+        if (publisherYearComboBox != null) {
+            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996","2007","2008", "2009", "2010"
+                    , "2011", "2012", "2013", "2014", "2015",
+                    "2016", "2017", "2018", "2019", "2020",
+                    "2021", "2022", "2023","2024","2025"));
+        }
+        if (availabilityStatusComboBox != null) {
+            availabilityStatusComboBox.setItems(FXCollections.observableArrayList("All", "Yes", "No", "Reserved"));
+        }
+    }
+
+    private void setupHibernate() {
+        try {
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sessionFactory = null;
+        }
+    }
+
+    private void loadAllBooks() {
+        if (sessionFactory != null) {
+            bookList.clear();
+            ObservableList<Books> filtered = filterBooks(SelectedGenre, SelectedAuthor, SelectedPublisherYear, SelectedAvailabilityStatus);
+            if (filtered.isEmpty()) {
+                bookList.addAll(booksList);  // Revert to all books if no match
+            } else {
+                bookList.addAll(filtered);
+            }
+            displayFilterBooks(bookList);
+
+            //bookList.addAll(fetchAllBooks());
+
+
+        }
+    }
+
+    private void displayFilterBooks(ObservableList<Books> books) {
+        booksContainer.getChildren().clear();
+
+            for (Books book : books) {
+                    AnchorPane bookPane = createBookPanel(book);
+                    booksContainer.getChildren().add(bookPane);
+
+            }
+    }
+
+
+    @FXML
+    private void applyFilters() {
+        String selectedGenre = genreComboBox != null && genreComboBox.getValue() != null ? genreComboBox.getValue() : "All";
+        String selectedAuthor = authorComboBox != null && authorComboBox.getValue() != null ? authorComboBox.getValue() : "All";
+        String selectedPublisherYear = publisherYearComboBox != null && publisherYearComboBox.getValue() != null ? publisherYearComboBox.getValue() : "All";
+        String selectedAvailabilityStatus = availabilityStatusComboBox != null && availabilityStatusComboBox.getValue() != null ? availabilityStatusComboBox.getValue() : "All";
+
+        ObservableList<Books> filtered = filterBooks(selectedGenre, selectedAuthor, selectedPublisherYear, selectedAvailabilityStatus);
+        bookList.clear();
+        bookList.addAll(filtered);
+        displayBooks(bookList);
+    }
+
+
+
+    private ObservableList<Books> filterBooks(String genre, String author, String year, String availability) {
+        return booksList.stream()
+                .filter(book -> (genre.equals("All") || book.getGenre().equalsIgnoreCase(genre)))
+                .filter(book -> (author.equals("All") || book.getAuthor().equalsIgnoreCase(author)))
+                .filter(book -> (year.equals("All") || book.getPublicationYear().equals(year)))
+                .filter(book -> (availability.equals("All") || book.getAvailable().equalsIgnoreCase(availability)))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+    }
+
+
+
     private void displayBooks(List<Books> books) {
         booksContainer.getChildren().clear();
 
@@ -85,7 +293,7 @@ public class allBooksController {
         bookPanel.setPrefSize(192, 110);
         bookPanel.setStyle("-fx-background-color: #FDE8D3; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 5;");
 
-        // Book Image with Top Margin
+
         ImageView imageView = new ImageView();
         imageView.setFitHeight(110);
         imageView.setFitWidth(75);
@@ -131,9 +339,6 @@ public class allBooksController {
         return bookPanel;
     }
 
-    /**
-     * Real-time search filtering
-     */
     private void searchBook(String searchText) {
         searchText = searchText.trim().toLowerCase();
 
@@ -154,9 +359,7 @@ public class allBooksController {
         displayBooks(filteredBooks);
     }
 
-    /**
-     * Update search suggestions dynamically.
-     */
+
     private void updateSearchSuggestions(String searchText) {
         if (searchText.isEmpty()) {
             searchSuggestions.setVisible(false);
@@ -172,27 +375,24 @@ public class allBooksController {
         searchSuggestions.setItems(FXCollections.observableArrayList(suggestions));
         searchSuggestions.setVisible(!suggestions.isEmpty());
     }
-
-    /**
-     * Navigate to book details
-     */
     private void viewDetails(Books book) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDetails.fxml"));
         Parent root = loader.load();
 
+        ViewDetailsController detailsController = loader.getController();
+        detailsController.initialize(book.getId());
+
         Stage stage = (Stage) allBook.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 
-    /**
-     * Navigate to dashboard
-     */
-    @FXML
-    public void goDashboard(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
-        Parent root = loader.load();
 
-        Stage stage = (Stage) allBook.getScene().getWindow();
-        stage.setScene(new Scene(root));
+
+
+    public void close(){
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
+
