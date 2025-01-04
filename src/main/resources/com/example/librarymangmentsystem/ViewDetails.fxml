@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.ViewDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.ViewDetailsController">
     <children>
         <HBox alignment="CENTER" minHeight="10.0" prefHeight="25.0" prefWidth="600.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
@@ -25,10 +22,10 @@
                 </Label>
             </children>
         </HBox>
-        <HBox layoutY="22.0" prefHeight="388.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" HBox.hgrow="ALWAYS">
+        <HBox alignment="CENTER" layoutY="22.0" prefHeight="388.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" HBox.hgrow="ALWAYS">
             <children>
                 <ImageView fx:id="BookImageView" fitHeight="382.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
-                <VBox fx:id="mainVBox" prefHeight="350.0" prefWidth="600.0" spacing="20" VBox.vgrow="ALWAYS">
+                <VBox fx:id="mainVBox" prefHeight="350.0" prefWidth="600.0" spacing="20" alignment="CENTER" VBox.vgrow="ALWAYS">
                     <children>
                         <HBox prefHeight="76.4" prefWidth="354.0">
                             <children>
@@ -40,9 +37,9 @@
                                         <Font name="Algerian" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="titleLabel" textFill="#fde8d8">
+                                <Label fx:id="titleLabel" textFill="#937058">
                                     <font>
-                                        <Font name="Algerian" size="12.0" />
+                                        <Font name="Algerian" size="15.0" />
                                     </font>
                                     <padding>
                                         <Insets left="25.0" top="30.0" />
@@ -60,10 +57,13 @@
                                         <Font name="Algerian" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="authorLabel" textFill="#fde8d8">
+                                <Label fx:id="authorLabel" textFill="#937058">
                                     <padding>
                                         <Insets left="25.0" top="20.0" />
                                     </padding>
+                           <font>
+                              <Font name="Algerian" size="15.0" />
+                           </font>
                                 </Label>
                             </children>
                         </HBox>
@@ -77,10 +77,13 @@
                                         <Font name="Algerian" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="genreLabel" textFill="#fde8d8">
+                                <Label fx:id="genreLabel" textFill="#937058">
                                     <padding>
                                         <Insets left="25.0" top="20.0" />
                                     </padding>
+                           <font>
+                              <Font name="Algerian" size="15.0" />
+                           </font>
                                 </Label>
                             </children>
                         </HBox>
@@ -94,10 +97,13 @@
                                         <Font name="Algerian" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="publicationYearLabel" textFill="#fde8d8">
+                                <Label fx:id="publicationYearLabel" textFill="#937058">
                                     <padding>
                                         <Insets left="25.0" top="20.0" />
                                     </padding>
+                           <font>
+                              <Font name="Algerian" size="15.0" />
+                           </font>
                                 </Label>
                             </children>
                         </HBox>
@@ -115,6 +121,9 @@
                                     <padding>
                                         <Insets left="25.0" top="20.0" />
                                     </padding>
+                           <font>
+                              <Font name="Algerian" size="15.0" />
+                           </font>
                                 </Label>
                             </children>
                         </HBox>
