@@ -1,8 +1,9 @@
 package com.example.librarymangmentsystem.models.services;
 
-import java.sql.*;
 import com.example.librarymangmentsystem.models.User;
 import com.example.librarymangmentsystem.models.interfaces.UserDAO;
+
+import java.sql.*;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -52,12 +53,8 @@ public class UserDAOImpl implements UserDAO {
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
                 int roleId = resultSet.getInt("role_id");
-                String role = switch (roleId) {
-                    case 1 -> "Admin";
-                    case 2 -> "Librarian";
-                    case 3 -> "User";
-                    default -> "Unknown";
-                };
+                String role = getRoleName(roleId);
+
                 user = new User(username, email, password, role);
             }
         } catch (SQLException e) {
@@ -79,12 +76,8 @@ public class UserDAOImpl implements UserDAO {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 int roleId = resultSet.getInt("role_id");
-                String role = switch (roleId) {
-                    case 1 -> "Admin";
-                    case 2 -> "Librarian";
-                    case 3 -> "User";
-                    default -> "Unknown";
-                };
+                String role = getRoleName(roleId);
+
                 user = new User(username, email, password, role);
             }
         } catch (SQLException e) {
@@ -123,5 +116,29 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
         return exists;
+    }
+
+    public boolean usernameExists(String username) {
+        boolean exists = false;
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement stmt = connection.prepareStatement("SELECT COUNT(*) FROM users WHERE username = ?")) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                exists = rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
+    private String getRoleName(int roleId) {
+        return switch (roleId) {
+            case 1 -> "Admin";
+            case 2 -> "Librarian";
+            case 3 -> "User";
+            default -> "Unknown";
+        };
     }
 }
