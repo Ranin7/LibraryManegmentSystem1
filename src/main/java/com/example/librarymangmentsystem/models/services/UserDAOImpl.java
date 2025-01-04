@@ -8,7 +8,7 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/librarydb";
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "201224";
+    private static final String DB_PASSWORD = "Group3_123";
 
     @Override
     public void addUser(User user) {
