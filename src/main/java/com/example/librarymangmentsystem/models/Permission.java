@@ -6,14 +6,12 @@ public class Permission {
     private String name;
     private String description;
 
-    // Constructor
     public Permission(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    // Getter and Setter methods
     public int getId() {
         return id;
     }
