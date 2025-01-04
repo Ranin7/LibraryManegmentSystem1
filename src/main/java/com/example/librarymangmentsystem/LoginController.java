@@ -28,7 +28,7 @@ public class LoginController {
 
     private UserDAO userDAO = new UserDAOImpl();
 
-    private Preferences preferences = Preferences.userNodeForPackage(LoginController.class); // تفضيلات المستخدم
+    private Preferences preferences = Preferences.userNodeForPackage(LoginController.class);
 
     @FXML
     public void initialize() {
@@ -52,22 +52,18 @@ public class LoginController {
 
         User user = userDAO.getUserByUsername(username);
         if (user != null) {
-            if (user.getRole().equals("User")) {
+            String roleName = user.getRole().getRoleName();
+            if (roleName.equals("User")) {
                 goToPage(event, "BooksPage.fxml");
                 saveUserPreferences(username, password);
-            } else if (user.getRole().equals("Admin") || user.getRole().equals("Librarian")) {
+            } else if (roleName.equals("Admin") || roleName.equals("Librarian")) {
                 if (password.isEmpty()) {
                     showAlert("Login Failed", "Password cannot be empty for Admin or Librarian.", Alert.AlertType.ERROR);
                     return;
                 }
                 if (user.getPassword().equals(password)) {
                     saveUserPreferences(username, password);
-
-                    if (user.getRole().equals("Admin")) {
-                        goToPage(event, "dashboard.fxml");
-                    } else if (user.getRole().equals("Librarian")) {
-                        goToPage(event, "dashboard.fxml");
-                    }
+                    goToPage(event, "dashboard.fxml");
                 } else {
                     showAlert("Login Failed", "Invalid password.", Alert.AlertType.ERROR);
                 }
@@ -90,6 +86,7 @@ public class LoginController {
             preferences.putBoolean("rememberMe", false);
         }
     }
+
     private void goToPage(ActionEvent event, String fxmlFileName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
@@ -101,12 +98,14 @@ public class LoginController {
             showAlert("Navigation Error", "Failed to load the page: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void handleForgetPassword(ActionEvent event) {
         try {

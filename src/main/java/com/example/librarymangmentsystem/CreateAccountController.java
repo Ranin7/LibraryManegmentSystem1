@@ -1,6 +1,7 @@
 package com.example.librarymangmentsystem;
 
 import com.example.librarymangmentsystem.models.User;
+import com.example.librarymangmentsystem.models.Role;
 import com.example.librarymangmentsystem.models.services.UserDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,8 +77,12 @@ public class CreateAccountController {
             return;
         }
 
-        User newUser = new User(username, email, password, "Librarian");
+        Role role = new Role();
+        role.setId(2);
+
+        User newUser = new User(username, email, password, role);
         userDAO.addUser(newUser);
+
 
         showAlert("Account Created", "Your account has been successfully created!", Alert.AlertType.INFORMATION);
     }
