@@ -1,19 +1,29 @@
 package com.example.librarymangmentsystem.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "permissions")
 public class Permission {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "permission_id")
     private int id;
+
+    @Column(name = "permission_name", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "description")
     private String description;
 
-    // Constructor
-    public Permission(int id, String name, String description) {
-        this.id = id;
+    public Permission() {}
+
+    public Permission(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
-    // Getter and Setter methods
     public int getId() {
         return id;
     }

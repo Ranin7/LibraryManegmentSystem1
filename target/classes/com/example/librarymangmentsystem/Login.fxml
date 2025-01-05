@@ -66,7 +66,8 @@
             <AnchorPane.rightAnchor>168.0</AnchorPane.rightAnchor>
             <AnchorPane.bottomAnchor>70.0</AnchorPane.bottomAnchor>
         </Button>
-        <CheckBox layoutX="169.0" layoutY="244.0" mnemonicParsing="false" style="-fx-box-border: #657166; -fx-mark-color: #657166;" text="Remember Me">
+
+        <CheckBox layoutX="169.0" layoutY="244.0" mnemonicParsing="false" style="-fx-box-border: #657166; -fx-mark-color: #657166;" text="Remember Me" fx:id="rememberMeCheckBox">
             <AnchorPane.topAnchor>244.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>169.0</AnchorPane.leftAnchor>
         </CheckBox>
@@ -78,17 +79,17 @@
             <AnchorPane.topAnchor>170.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>168.0</AnchorPane.leftAnchor>
         </Label>
-        <TextField fx:id="userNameField" layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
+        <TextField  promptText="Enter your username" fx:id="userNameField" layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
             <AnchorPane.topAnchor>126.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
         </TextField>
-        <PasswordField fx:id="passwordField" layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
+        <PasswordField promptText="Enter your password" fx:id="passwordField" layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
             <AnchorPane.topAnchor>188.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
         </PasswordField >
-        <Button layoutX="329.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: #efefef;" text="Forget Password?">
+        <Button fx:id="forgetPasswordButton" layoutX="329.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: #efefef;" text="Forget Password?" onAction="#handleForgetPassword">
             <AnchorPane.topAnchor>240.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>329.0</AnchorPane.leftAnchor>
         </Button>

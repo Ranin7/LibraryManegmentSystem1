@@ -10,12 +10,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.HistoryController">
     <children>
 
-        <TableView layoutX="66.0" layoutY="79.0" prefHeight="274.0" prefWidth="479.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="79.0">
+        <TableView fx:id="resTable" layoutX="66.0" layoutY="79.0" prefHeight="274.0" prefWidth="479.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="79.0">
             <columns>
-                <TableColumn prefWidth="116.0" text="BookName" />
-                <TableColumn prefWidth="116.0" text="UserName" />
-                <TableColumn prefWidth="116.0" text="ReservationDate " />
-                <TableColumn prefWidth="116.0" text="ReturnDate" />
+                <TableColumn fx:id="columnB1" prefWidth="116.0" text="BookName" />
+                <TableColumn fx:id="columnU" prefWidth="116.0" text="UserName" />
+                <TableColumn fx:id="columnRD" prefWidth="116.0" text="ReservationDate " />
+                <TableColumn fx:id="columnRED" prefWidth="116.0" text="ReturnDate" />
             </columns>
         </TableView>
         <Text layoutX="196.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Arial Rounded MT Bold;" text="Book History ">

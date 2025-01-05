@@ -1,7 +1,6 @@
 package com.example.librarymangmentsystem.models.interfaces;
 
 import com.example.librarymangmentsystem.models.Permission;
-
 import java.util.List;
 
 public interface PermissionDAO {
