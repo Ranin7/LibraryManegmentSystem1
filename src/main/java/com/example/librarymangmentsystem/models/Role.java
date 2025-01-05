@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem.models;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -9,26 +9,19 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private int id;
 
     @Column(name = "role_name", nullable = false, unique = true)
     private String roleName;
 
-    @ManyToMany
-    @JoinTable(
-            name = "role_permissions",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id")
-    )
-    private Set<Permission> permissions;
+    @OneToMany(mappedBy = "role")
+    private List<User> users;
 
-    // Getters and Setters
-    public int getId() {
-        return id;
-    }
+    public Role() {}
 
-    public void setId(int id) {
-        this.id = id;
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getRoleName() {
@@ -38,12 +31,18 @@ public class Role {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
-
-    public Set<Permission> getPermissions() {
-        return permissions;
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    @Override
+    public String toString() {
+        return roleName;
     }
 
-    public void setPermissions(Set<Permission> permissions) {
-        this.permissions = permissions;
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

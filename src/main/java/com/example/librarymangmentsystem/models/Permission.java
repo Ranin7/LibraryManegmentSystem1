@@ -8,23 +8,22 @@ public class Permission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "permission_id")
     private int id;
 
     @Column(name = "permission_name", nullable = false, unique = true)
-    private String permissionName;
+    private String name;
 
+    @Column(name = "description")
+    private String description;
 
+    public Permission() {}
 
-    // Constructor
-    public Permission() {
+    public Permission(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
-    public Permission(String permissionName, String description) {
-        this.permissionName = permissionName;
-
-    }
-
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -33,12 +32,28 @@ public class Permission {
         this.id = id;
     }
 
-    public String getPermissionName() {
-        return permissionName;
+    public String getName() {
+        return name;
     }
 
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

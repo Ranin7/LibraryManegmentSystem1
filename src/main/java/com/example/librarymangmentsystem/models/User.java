@@ -8,6 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private int id;
 
     @Column(name = "username", nullable = false, unique = true)
@@ -19,27 +20,20 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
-    private String role;
-
-
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
-    private Role roles;
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-    // No-argument constructor required by JPA
     public User() {
     }
 
-    // Constructor with parameters
-    public User(String username, String email, String password, String role) {
+    public User(String username, String email, String password, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    // Getter and Setter methods
     public int getId() {
         return id;
     }
@@ -72,11 +66,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

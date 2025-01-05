@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
 import com.example.librarymangmentsystem.models.services.UserDAOImpl;
 import com.example.librarymangmentsystem.util.EmailService;
 
@@ -46,7 +45,6 @@ public class PasswordResetController {
             return;
         }
 
-        // التحقق من صحة كلمة المرور
         if (!isValidPassword(newPassword)) {
             showAlert(AlertType.ERROR, "Error", "Password must be at least 6 characters long, contain at least one digit, one letter, and one special character.");
             return;
@@ -136,7 +134,8 @@ public class PasswordResetController {
     }
 
     private boolean isValidPassword(String password) {
-        String regex = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+\\-\\[\\]{};':\"|,.<>/?]).{6,}$";
+        String regex = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$";
         return Pattern.matches(regex, password);
     }
 }
+
