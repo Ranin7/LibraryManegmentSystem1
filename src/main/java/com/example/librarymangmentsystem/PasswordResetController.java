@@ -1,4 +1,5 @@
 package com.example.librarymangmentsystem;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -10,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
 import com.example.librarymangmentsystem.models.services.UserDAOImpl;
 import com.example.librarymangmentsystem.util.EmailService;
 
@@ -46,7 +46,7 @@ public class PasswordResetController {
         }
 
         if (!isValidPassword(newPassword)) {
-            showAlert(AlertType.ERROR, "Error", "Password must be at least 6 characters long, contain at least one digit, and one special character.");
+            showAlert(AlertType.ERROR, "Error", "Password must be at least 6 characters long, contain at least one digit, one letter, and one special character.");
             return;
         }
 
@@ -55,10 +55,9 @@ public class PasswordResetController {
             return;
         }
 
-        // تحقق مما إذا كان البريد الإلكتروني موجودًا في قاعدة البيانات
         UserDAOImpl userDAO = new UserDAOImpl();
         if (!userDAO.emailExists(userEmail)) {
-            showAlert(AlertType.ERROR, "Error", "Email not found.");
+            showAlert(AlertType.ERROR, "Error", "This email is not registered!");
             return;
         }
 
@@ -70,14 +69,6 @@ public class PasswordResetController {
         showAlert(AlertType.INFORMATION, "Password Reset", "A verification code has been sent to your email.");
         navigateToVerificationPage();
     }
-
-
-    private boolean isValidPassword(String password) {
-        // Regular expression to check password criteria: at least one digit, one special character, and length >= 6
-        String passwordRegex = "^(?=.[0-9])(?=.[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]).{6,}$";
-        return Pattern.matches(passwordRegex, password);
-    }
-
 
     private String generateVerificationCode() {
         return String.format(Locale.ENGLISH, "%06d", (int) (Math.random() * 1000000));
@@ -141,4 +132,10 @@ public class PasswordResetController {
     private boolean isValidEmail(String email) {
         return email != null && email.contains("@") && email.contains(".");
     }
+
+    private boolean isValidPassword(String password) {
+        String regex = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$";
+        return Pattern.matches(regex, password);
+    }
 }
+

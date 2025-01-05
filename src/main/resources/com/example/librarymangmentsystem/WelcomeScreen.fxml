@@ -23,7 +23,7 @@
                         <DropShadow>
                             <color>
                                 <Color red="0.3960784375667572" green="0.4431372582912445" blue="0.4000000059604645" />
-                            </color>
+                             </color>
                         </DropShadow>
                     </topInput>
                 </Blend>
