@@ -29,6 +29,29 @@ public class ResDAOImp implements ResDAO {
         session.getTransaction().commit();
         session.close();
     }
+    public boolean updateBookStatus(Books book) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        try {
+            session.update(book);  // تحديث الكائن من نوع Books باستخدام Hibernate Session
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+    public List<Reservation> getReservationsByBookId(int bookId) {
+        Session session = sessionFactory.openSession();
+        List<Reservation> reservations = session.createQuery("FROM Reservation WHERE bookid.id = :bookId", Reservation.class)
+                .setParameter("bookId", bookId)
+                .getResultList();
+        session.close();
+        return reservations;
+    }
+
 
     @Override
     public Reservation getRes(int id) {

@@ -1,5 +1,4 @@
 package com.example.librarymangmentsystem;
-
 import com.example.librarymangmentsystem.models.Reservation;
 import com.example.librarymangmentsystem.models.services.ResDAOImp;
 import javafx.collections.FXCollections;
@@ -12,38 +11,31 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.swing.*;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.List;
 
 public class ReservationController {
 
     @FXML
-    private TableView<Reservation> resTable ;
+    private TableView<Reservation> resTable;
 
     @FXML
-    private TableColumn<Reservation, String > columnB1;
+    private TableColumn<Reservation, String> columnB1;
     @FXML
     private TableColumn<Reservation, String> columnU;
     @FXML
     private TableColumn<Reservation, String> columnRD;
     @FXML
     private TableColumn<Reservation, String> columnRED;
-
     @FXML
     private TableColumn<Reservation, String> columnAV;
-
     @FXML
     private TableColumn<Reservation, String> column3;
 
+    @FXML
+    private TextField searchField;
 
-
+    private ObservableList<Reservation> reservationsList;
 
     @FXML
     private void initialize() {
@@ -55,7 +47,7 @@ public class ReservationController {
         column3.setCellValueFactory(new PropertyValueFactory<>("AnotherB"));
 
         resTable.setEditable(true);
-
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterReservations(newValue));
         columnB1.setCellFactory(TextFieldTableCell.forTableColumn());
         columnB1.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
@@ -80,73 +72,60 @@ public class ReservationController {
         columnRED.setCellFactory(TextFieldTableCell.forTableColumn());
         columnRED.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
-            if ("yes".equalsIgnoreCase(reservation.getAnotherB())) {
-
-                JOptionPane.showMessageDialog(null, "Cannot modify Return Date for this reservation.");
-                resTable.refresh();
-            } else {
-                reservation.setReturnDate(event.getNewValue());
-                updateReservation(reservation);
-            }
+            reservation.setReturnDate(event.getNewValue());
+            updateReservation(reservation);
         });
 
-
-        columnAV.setCellValueFactory(new PropertyValueFactory<>("available"));
         columnAV.setCellFactory(TextFieldTableCell.forTableColumn());
         columnAV.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
-            String newValue = event.getNewValue();
-
-            if (!newValue.equalsIgnoreCase("reserved") && !newValue.equalsIgnoreCase("no")) {
-                JOptionPane.showMessageDialog(null, "Invalid value! Use 'reserved' or 'no' only.");
-                resTable.refresh();
-                return;
-            }
-
-            reservation.setAvailable(newValue);
+            reservation.setAvailable(event.getNewValue());
             updateReservation(reservation);
         });
+
         column3.setCellFactory(TextFieldTableCell.forTableColumn());
         column3.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
-            String newAnotherB = event.getNewValue();
-
-
-            if ("no".equalsIgnoreCase(reservation.getAvailable())) {
-
-                if ("yes".equalsIgnoreCase(newAnotherB)) {
-                    JOptionPane.showMessageDialog(null, "Cannot set AnotherB to 'yes' when available is 'no'.");
-                    resTable.refresh();
-                    return;
-                }
-            }
-
-            reservation.setAnotherB(newAnotherB);
-
+            reservation.setAnotherB(event.getNewValue());
             updateReservation(reservation);
         });
 
-
-
-
         loadTableData();
-    }
 
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterReservations(newValue));
+    }
 
     private void loadTableData() {
         ResDAOImp resDAO = new ResDAOImp();
-        ObservableList<Reservation> reservations = FXCollections.observableArrayList(resDAO.getAll());
-        resTable.setItems(reservations);
+        reservationsList = FXCollections.observableArrayList(resDAO.getAll());
+        resTable.setItems(reservationsList);
+    }
+
+    private void filterReservations(String searchText) {
+        if (reservationsList == null) return;
+
+        ObservableList<Reservation> filteredList = FXCollections.observableArrayList();
+
+        for (Reservation reservation : reservationsList) {
+            if (reservation.getBookName().toLowerCase().contains(searchText.toLowerCase()) ||
+                    reservation.getUName().toLowerCase().contains(searchText.toLowerCase()) ||
+                    reservation.getResDate().toLowerCase().contains(searchText.toLowerCase()) ||
+                    reservation.getReturnDate().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(reservation);
+            }
+        }
+
+        resTable.setItems(filteredList);
+
+        if (searchText.isEmpty()) {
+            resTable.setItems(reservationsList);
+        }
     }
 
     private void updateReservation(Reservation reservation) {
-
         ResDAOImp resDAO = new ResDAOImp();
         resDAO.update(reservation);
-
     }
-
-
 
     @FXML
     private void GoBack(ActionEvent event) {

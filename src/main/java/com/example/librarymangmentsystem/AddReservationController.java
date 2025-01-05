@@ -13,12 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class AddReservationController {
 
@@ -32,6 +31,8 @@ public class AddReservationController {
     @FXML
     private TextField uname;
 
+    @FXML
+    private TextField searchField;
 
     @FXML
     private DatePicker resdate;
@@ -49,39 +50,63 @@ public class AddReservationController {
     @FXML
     private TableColumn<Books, String> column2;
 
+    private ObservableList <Books> booksList;
 
     @FXML
-    private void initialize() {
 
+    private void initialize() {
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         column2.setCellValueFactory(new PropertyValueFactory<>("bookName"));
 
-        tableforbook.setEditable(true);
-
-        column1.setCellFactory(TextFieldTableCell.forTableColumn(new javafx.util.converter.IntegerStringConverter()));
-        column1.setOnEditCommit(event -> {
-            Books books = event.getRowValue();
-            books.setId(event.getNewValue());
-
-        });
-
-        column2.setCellFactory(TextFieldTableCell.forTableColumn());
-        column2.setOnEditCommit(event -> {
-            Books books = event.getRowValue();
-            books.setBookName(event.getNewValue());
-
-        });
-
-
+        tableforbook.setEditable(false);
 
         loadTableData();
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterBooks(newValue));
+
+
+        tableforbook.setRowFactory(tv -> {
+            TableRow<Books> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    Books selectedBook = row.getItem();
+                    fillFieldsWithBookData(selectedBook);
+                }
+            });
+            return row;
+        });
+    }
+
+    private void fillFieldsWithBookData(Books book) {
+        bookid.setText(String.valueOf(book.getId()));
+        bookname.setText(book.getBookName());
     }
 
     private void loadTableData() {
         BookDOAImp bookDOAImp = new BookDOAImp();
-        ObservableList<Books> books = FXCollections.observableArrayList(bookDOAImp.getAll());
-        tableforbook.setItems(books);
+        booksList = FXCollections.observableArrayList(bookDOAImp.getAll());
+        tableforbook.setItems(booksList);
     }
+
+    private void filterBooks(String searchText) {
+        if (booksList == null) return;
+
+        ObservableList<Books> filteredList = FXCollections.observableArrayList();
+
+        for (Books book : booksList) {
+
+            if (String.valueOf(book.getId()).contains(searchText) ||
+                    book.getBookName().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(book);
+            }
+        }
+        tableforbook.setItems(filteredList);
+
+        if (searchText.isEmpty()) {
+            tableforbook.setItems(booksList);
+        }
+    }
+
+
 
     public void addRes(ActionEvent ev) {
         try {
@@ -92,21 +117,28 @@ public class AddReservationController {
             LocalDate returnDate = returndate.getValue();
             String userName = uname.getText().trim();
 
+            ResDAOImp resDAO = new ResDAOImp();
+            Books book = resDAO.getBookById(bookId);
+            if (book == null || !book.getBookName().equalsIgnoreCase(bookNameInput)) {
+                JOptionPane.showMessageDialog(null, "Error: Book ID and name do not match. Please check the entered information!");
+                return;
+            }
+
+            List<Reservation> reservations = resDAO.getReservationsByBookId(book.getId());
+            for (Reservation reservation : reservations) {
+                if ("reserved".equalsIgnoreCase(reservation.getAvailable())) {
+                    JOptionPane.showMessageDialog(null, "Error: This book is already reserved!");
+                    clearFields();
+                    return;
+                }
+            }
 
             if (returnDate != null && reservationDate != null && returnDate.isBefore(reservationDate)) {
                 JOptionPane.showMessageDialog(null, "Return date must be after the reservation date!");
                 return;
             }
 
-            ResDAOImp resDAO = new ResDAOImp();
-            Books book = resDAO.getBookById(bookId);
-            User user=resDAO.getUserById(userId);
-
-            if (book == null || !book.getBookName().equalsIgnoreCase(bookNameInput)) {
-                JOptionPane.showMessageDialog(null, "Error: Book ID and name do not match. Please check the entered information!");
-                return;
-            }
-
+            User user = resDAO.getUserById(userId);
             if (user == null || !user.getUsername().equalsIgnoreCase(userName)) {
                 JOptionPane.showMessageDialog(null, "Error: User ID and name do not match. Please check the entered information!");
                 return;
@@ -120,12 +152,13 @@ public class AddReservationController {
             reservation.setUser(user);
             reservation.setUName(userName);
             reservation.setAvailable("reserved");
+            resDAO.updateBookStatus(book);
 
             boolean success = resDAO.saveReservation(reservation);
 
             if (success) {
                 JOptionPane.showMessageDialog(null, "Reservation added successfully!");
-                //   clearFields();
+               clearFields();
             } else {
                 JOptionPane.showMessageDialog(null, "Error saving reservation.");
             }
@@ -136,6 +169,9 @@ public class AddReservationController {
         }
     }
 
+
+
+
     private void clearFields() {
         bookid.clear();
         bookname.clear();
@@ -144,6 +180,7 @@ public class AddReservationController {
         uname.clear();
         uid.clear();
     }
+
 
 
     @FXML

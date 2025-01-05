@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.ViewDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" style="-fx-background-color: #CFD6C4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.ViewDetailsController">
     <children>
         <HBox alignment="CENTER" minHeight="10.0" prefHeight="25.0" prefWidth="600.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
@@ -25,9 +28,9 @@
         <HBox alignment="CENTER" layoutY="22.0" prefHeight="388.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" HBox.hgrow="ALWAYS">
             <children>
                 <ImageView fx:id="BookImageView" fitHeight="382.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
-                <VBox fx:id="mainVBox" prefHeight="350.0" prefWidth="600.0" spacing="20" alignment="CENTER" VBox.vgrow="ALWAYS">
+                <VBox fx:id="mainVBox" alignment="CENTER" prefHeight="365.0" prefWidth="354.0" spacing="20" VBox.vgrow="ALWAYS">
                     <children>
-                        <HBox prefHeight="76.4" prefWidth="354.0">
+                        <HBox prefHeight="76.4" prefWidth="309.0">
                             <children>
                                 <Label text="Title" textFill="#657166">
                                     <padding>
@@ -67,7 +70,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox prefHeight="76.4" prefWidth="354.0">
+                        <HBox prefHeight="76.4" prefWidth="298.0">
                             <children>
                                 <Label text="Genre" textFill="#657166">
                                     <padding>
@@ -107,7 +110,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox prefHeight="76.4" prefWidth="354.0">
+                        <HBox prefHeight="76.4" prefWidth="252.0">
                             <children>
                                 <Label text="Availability Status" textFill="#657166">
                                     <padding>
@@ -125,6 +128,14 @@
                               <Font name="Algerian" size="15.0" />
                            </font>
                                 </Label>
+                        <Button fx:id="history" mnemonicParsing="false" onAction="#goTohistory" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #b3c3b4;" text="History">
+                           <HBox.margin>
+                              <Insets left="20.0" top="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Algerian" size="12.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                     </children>

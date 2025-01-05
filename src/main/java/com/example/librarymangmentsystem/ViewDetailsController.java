@@ -25,6 +25,9 @@ public class ViewDetailsController {
     private Button backButton;
 
     @FXML
+    private Button history;
+
+    @FXML
     public void backToHome(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AllBooks.fxml"));
         Parent root = loader.load();
@@ -32,6 +35,25 @@ public class ViewDetailsController {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
+    @FXML
+    public void goTohistory(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("historyForBook.fxml"));
+        Parent root = loader.load();
+
+        String bookName = titleLabel.getText();
+
+        HistoryForBookController controller = loader.getController();
+        controller.loadReservationsForBook(bookName);
+
+        Stage stage = (Stage) history.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+
+
+
+
+
 
     @FXML
     private Label titleLabel;
@@ -83,4 +105,5 @@ public class ViewDetailsController {
             e.printStackTrace();
         }
     }
+
 }

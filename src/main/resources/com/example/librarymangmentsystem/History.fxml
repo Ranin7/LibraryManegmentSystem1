@@ -18,7 +18,7 @@
                 <TableColumn fx:id="columnRED" prefWidth="116.0" text="ReturnDate" />
             </columns>
         </TableView>
-        <Text layoutX="196.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Arial Rounded MT Bold;" text="Book History ">
+        <Text layoutX="242.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Arial Rounded MT Bold;" text="History ">
             <font>
                 <Font size="34.0" />
             </font>
