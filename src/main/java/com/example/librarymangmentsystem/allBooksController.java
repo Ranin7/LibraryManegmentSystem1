@@ -126,6 +126,22 @@ public class allBooksController {
 
     @FXML
     public void initialize() {
+        String userRole = UserSession.getInstance().getUserRole();
+
+        allBook.setOnAction(event -> {
+            try {
+                if ("Librarian".equals(userRole)) {
+                    // Load Dashboard for Librarian
+                    loadScene("Dashboard.fxml");
+                } else if ("User".equals(userRole)) {
+                    // Load Welcome Screen for User
+                    loadScene("WelcomeScreen.fxml");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         setupTableView();
         loadFilterOptions();
         setupHibernate();
@@ -138,6 +154,7 @@ public class allBooksController {
             updateSearchSuggestions(newValue);
         });
 
+
         searchSuggestions.setOnMouseClicked(event -> {
             String selectedSuggestion = searchSuggestions.getSelectionModel().getSelectedItem();
             if (selectedSuggestion != null) {
@@ -146,6 +163,7 @@ public class allBooksController {
                 searchSuggestions.setVisible(false); // Hide suggestions after selection
             }
         });
+
 
 
 
@@ -163,6 +181,14 @@ public class allBooksController {
             filterVBox.setVisible(false);
             filterVBox.setManaged(false);
         }
+    }
+    private void loadScene(String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) allBook.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
