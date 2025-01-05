@@ -29,6 +29,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.io.ByteArrayInputStream;
 import javafx.scene.text.Text;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class allBooksController {
@@ -107,11 +110,8 @@ public class allBooksController {
     @FXML
     private ListView<String> searchSuggestions;// New ListView for predictive suggestions
 
-    @FXML
-    private ListView<String> filteredSuggestions;
 
     private final ObservableList<Books> booksList;
-    private ObservableList<Books> filteredBooks;
 
 
     private BookDOAImp bookDAO;
@@ -165,7 +165,6 @@ public class allBooksController {
 
     @FXML
     private void toggleFilterOptions() {
-        System.out.println("Filter button clicked!");
         if (filterVBox != null) {
             boolean isVisible = filterVBox.isVisible();
             filterVBox.setVisible(!isVisible);
@@ -205,10 +204,8 @@ public class allBooksController {
             authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover"));
         }
         if (publisherYearComboBox != null) {
-            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996","2007","2008", "2009", "2010"
-                    , "2011", "2012", "2013", "2014", "2015",
-                    "2016", "2017", "2018", "2019", "2020",
-                    "2021", "2022", "2023","2024","2025"));
+            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996", "2007","2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015",
+                    "2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"));
         }
         if (availabilityStatusComboBox != null) {
             availabilityStatusComboBox.setItems(FXCollections.observableArrayList("All", "Yes", "No", "Reserved"));
@@ -230,13 +227,11 @@ public class allBooksController {
             bookList.clear();
             ObservableList<Books> filtered = filterBooks(SelectedGenre, SelectedAuthor, SelectedPublisherYear, SelectedAvailabilityStatus);
             if (filtered.isEmpty()) {
-                bookList.addAll(booksList);  // Revert to all books if no match
+                bookList.addAll(booksList);
             } else {
                 bookList.addAll(filtered);
             }
             displayFilterBooks(bookList);
-
-            //bookList.addAll(fetchAllBooks());
 
 
         }
@@ -272,7 +267,24 @@ public class allBooksController {
         return booksList.stream()
                 .filter(book -> (genre.equals("All") || book.getGenre().equalsIgnoreCase(genre)))
                 .filter(book -> (author.equals("All") || book.getAuthor().equalsIgnoreCase(author)))
-                .filter(book -> (year.equals("All") || book.getPublicationYear().equals(year)))
+                .filter(book -> {
+            if (year.equals("All")) {
+                return true;
+            }
+            String publicationYear = book.getPublicationYear();
+
+            if (publicationYear != null && !publicationYear.isEmpty()) {
+                try {
+                    LocalDate date = LocalDate.parse(publicationYear, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    return String.valueOf(date.getYear()).equals(year.trim());
+                } catch (DateTimeParseException e) {
+                    System.out.println("Error parsing date: " + publicationYear);
+                }
+            }
+            return false;
+        })
+
+
                 .filter(book -> (availability.equals("All") || book.getAvailable().equalsIgnoreCase(availability)))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }

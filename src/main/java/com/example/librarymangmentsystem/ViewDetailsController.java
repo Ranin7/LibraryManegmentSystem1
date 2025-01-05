@@ -12,11 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 public class ViewDetailsController {
