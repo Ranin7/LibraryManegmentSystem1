@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface BookDOA {
 
-    public int save(Books book);
-    public void update(Books book);
+    public int save(Books books);
+    public void update(Books books);
     public void delete(int id);
     public Books getBook(int id);
     public List<Books> getAll();

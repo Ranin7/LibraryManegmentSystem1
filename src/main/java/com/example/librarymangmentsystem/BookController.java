@@ -70,15 +70,15 @@ public class BookController {
             }
         }
 
-        Books book = new Books();
-        book.setBookName(name);
-        book.setAuthor(author);
-        book.setGenre(genre);
-        book.setPublicationYear(publication);
-        book.setAvailable(availableStatus);
-        book.setImage(imageData);
+        Books books = new Books();
+        books.setBookName(name);
+        books.setAuthor(author);
+        books.setGenre(genre);
+        books.setPublicationYear(publication);
+        books.setAvailable(availableStatus);
+        books.setImage(imageData);
         BookDOAImp bookDAO = new BookDOAImp();
-        bookDAO.save(book);
+        bookDAO.save(books);
 
         clearFields();
     }

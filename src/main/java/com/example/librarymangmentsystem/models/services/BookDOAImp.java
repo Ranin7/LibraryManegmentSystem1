@@ -6,6 +6,8 @@ import com.example.librarymangmentsystem.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+
+
 import java.util.List;
 
 public class BookDOAImp implements BookDOA {
@@ -19,20 +21,20 @@ public class BookDOAImp implements BookDOA {
     }
 
     @Override
-    public int save(Books book) {
+    public int save(Books books) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(book);
+        session.save(books);
         session.getTransaction().commit();
         session.close();
         return 1;  // Return an integer as per your original logic (e.g., indicating success)
     }
 
     @Override
-    public void update(Books book) {
+    public void update(Books books) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.update(book);
+        session.update(books);
         session.getTransaction().commit();
         session.close();
     }
@@ -41,9 +43,9 @@ public class BookDOAImp implements BookDOA {
     public void delete(int id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Books book = session.get(Books.class, id);
-        if (book != null) {
-            session.delete(book);
+        Books books = session.get(Books.class, id);
+        if (books != null) {
+            session.delete(books);
         }
         session.getTransaction().commit();
         session.close();

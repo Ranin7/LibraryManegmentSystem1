@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.io.ByteArrayInputStream;
 import javafx.scene.text.Text;
+import org.hibernate.query.Query;
 
 
 public class allBooksController {
@@ -199,16 +201,16 @@ public class allBooksController {
 
     private void loadFilterOptions() {
         if (genreComboBox != null) {
-            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "History","Novel","Psychology","Political", "Children's Stories"));
+            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "history", "Political", "Children's Stories"));
         }
         if (authorComboBox != null) {
-            authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover"));
+            authorComboBox.setItems(FXCollections.observableArrayList("All", "Tom", "Alis", "Mohammed", "hassan", "Amjad", "Dostoyfiski", "ahlam","Haneen"));
         }
         if (publisherYearComboBox != null) {
-            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996","2007","2008", "2009", "2010"
+            publisherYearComboBox.setItems(FXCollections.observableArrayList("All", "2009", "2010"
                     , "2011", "2012", "2013", "2014", "2015",
                     "2016", "2017", "2018", "2019", "2020",
-                    "2021", "2022", "2023","2024","2025"));
+                    "2021", "2022", "2023"));
         }
         if (availabilityStatusComboBox != null) {
             availabilityStatusComboBox.setItems(FXCollections.observableArrayList("All", "Yes", "No", "Reserved"));
@@ -245,11 +247,11 @@ public class allBooksController {
     private void displayFilterBooks(ObservableList<Books> books) {
         booksContainer.getChildren().clear();
 
-            for (Books book : books) {
-                    AnchorPane bookPane = createBookPanel(book);
-                    booksContainer.getChildren().add(bookPane);
+        for (Books book : books) {
+            AnchorPane bookPane = createBookPanel(book);
+            booksContainer.getChildren().add(bookPane);
 
-            }
+        }
     }
 
 
