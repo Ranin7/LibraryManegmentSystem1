@@ -1,6 +1,9 @@
 package com.example.librarymangmentsystem.util;
 
 import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Permission;
+import com.example.librarymangmentsystem.models.Role;
+import com.example.librarymangmentsystem.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -16,6 +19,9 @@ public class HibernateUtil {
     private HibernateUtil(){
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Books.class);
+        configuration.addAnnotatedClass(Permission.class);
+        configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Role.class);
         configuration.configure();
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
