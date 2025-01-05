@@ -12,11 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 public class ViewDetailsController {
@@ -64,17 +62,17 @@ public class ViewDetailsController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<Books> query = session.createQuery("from Books where id = :bookID" , Books.class);
             query.setParameter("bookID",bookID);
-            Books book = query.uniqueResult();
+            Books books = query.uniqueResult();
 
-            if (book != null) {
-                titleLabel.setText(book.getBookName());
-                authorLabel.setText(book.getAuthor());
-                genreLabel.setText(book.getGenre());
-                publicationYearLabel.setText(book.getPublicationYear());
-                CheckAvailability.setText(book.getAvailable());
+            if (books != null) {
+                titleLabel.setText(books.getBookName());
+                authorLabel.setText(books.getAuthor());
+                genreLabel.setText(books.getGenre());
+                publicationYearLabel.setText(books.getPublicationYear());
+                CheckAvailability.setText(books.getAvailable());
 
-                if (book.getImage() != null) {
-                    Image image = new Image(new java.io.ByteArrayInputStream(book.getImage()));
+                if (books.getImage() != null) {
+                    Image image = new Image(new java.io.ByteArrayInputStream(books.getImage()));
                     BookImageView.setImage(image);
                 }
             }

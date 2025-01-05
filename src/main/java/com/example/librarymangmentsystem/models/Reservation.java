@@ -30,7 +30,7 @@ import javax.persistence.*;
 
         @ManyToOne
         @JoinColumn(name="uid" ,nullable = false)
-        public Role.User useri;
+        public User useri;
 
 
     public Reservation() {
@@ -93,12 +93,12 @@ import javax.persistence.*;
         this.bookid = bookid;
     }
 
-    public Role.User getUseri() {
+    public User getUseri() {
         return useri;
     }
 
 
-    public void setUseri(Role.User useri) {
+    public void setUseri(User useri) {
         this.useri = useri;
     }
 }

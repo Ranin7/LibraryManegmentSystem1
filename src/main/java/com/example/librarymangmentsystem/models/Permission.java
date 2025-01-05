@@ -1,17 +1,30 @@
 package com.example.librarymangmentsystem.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "permissions")
 public class Permission {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String description;
 
-    public Permission(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+    @Column(name = "permission_name", nullable = false, unique = true)
+    private String permissionName;
+
+
+
+    // Constructor
+    public Permission() {
     }
 
+    public Permission(String permissionName, String description) {
+        this.permissionName = permissionName;
+
+    }
+
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -20,28 +33,12 @@ public class Permission {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Permission{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

@@ -108,12 +108,12 @@ public class BookListController {
         col4.setOnEditCommit(event -> onEditCommit(event, "genre"));
         col5.setOnEditCommit(event -> onEditCommit(event, "publicationYear"));
         col6.setOnEditCommit(event -> {
-            Books book = event.getRowValue();
+            Books books = event.getRowValue();
             String newValue = event.getNewValue() ? "Yes" : "No";
-            book.setAvailable(newValue); // Update availability
+            books.setAvailable(newValue); // Update availability
 
-            if (!modifiedBooks.contains(book)) {
-                modifiedBooks.add(book); // Add book to modified list
+            if (!modifiedBooks.contains(books)) {
+                modifiedBooks.add(books); // Add book to modified list
             }
 
             System.out.println("Availability updated to: " + newValue);
@@ -150,12 +150,12 @@ public class BookListController {
 
     private void filterBooks(String searchText) {
         ObservableList<Books> filteredList = FXCollections.observableArrayList();
-        for (Books book : booksList) {
-            if (book.getBookName().toLowerCase().contains(searchText.toLowerCase()) ||
-                    book.getAuthor().toLowerCase().contains(searchText.toLowerCase()) ||
-                    book.getGenre().toLowerCase().contains(searchText.toLowerCase()) ||
-                    book.getPublicationYear().toLowerCase().contains(searchText.toLowerCase())) {
-                filteredList.add(book);
+        for (Books books : booksList) {
+            if (books.getBookName().toLowerCase().contains(searchText.toLowerCase()) ||
+                    books.getAuthor().toLowerCase().contains(searchText.toLowerCase()) ||
+                    books.getGenre().toLowerCase().contains(searchText.toLowerCase()) ||
+                    books.getPublicationYear().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(books);
             }
         }
         booksTable.setItems(filteredList);
@@ -168,26 +168,26 @@ public class BookListController {
     }
 
     private void onEditCommit(TableColumn.CellEditEvent<Books, ?> event, String property) {
-        Books book = event.getRowValue();
+        Books books = event.getRowValue();
         Object newValue = event.getNewValue();
         switch (property) {
             case "bookName":
-                book.setBookName((String) newValue);
+                books.setBookName((String) newValue);
                 break;
             case "author":
-                book.setAuthor((String) newValue);
+                books.setAuthor((String) newValue);
                 break;
             case "genre":
-                book.setGenre((String) newValue);
+                books.setGenre((String) newValue);
                 break;
             case "publicationYear":
-                book.setPublicationYear((String) newValue);
+                books.setPublicationYear((String) newValue);
                 break;
             default:
                 break;
         }
-        if (!modifiedBooks.contains(book)) {
-            modifiedBooks.add(book);
+        if (!modifiedBooks.contains(books)) {
+            modifiedBooks.add(books);
         }
 
         System.out.println("Updated " + property + ": " + newValue);
@@ -204,9 +204,9 @@ public class BookListController {
             return;
         }
         BookDOAImp bookDAO = new BookDOAImp();
-        for (Books book : modifiedBooks) {
-            System.out.println("Saving changes for book: " + book);
-            bookDAO.update(book);
+        for (Books books : modifiedBooks) {
+            System.out.println("Saving changes for book: " + books);
+            bookDAO.update(books);
         }
         loadBooks();
         booksTable.refresh();
