@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -261,7 +262,7 @@ public class allBooksController {
         booksContainer.getChildren().clear();
 
             for (Books book : books) {
-                    AnchorPane bookPane = createBookPanel(book);
+                    VBox bookPane = createBookPanel(book);
                     booksContainer.getChildren().add(bookPane);
 
             }
@@ -315,17 +316,22 @@ public class allBooksController {
         booksContainer.getChildren().clear();
 
         for (Books book : books) {
-            AnchorPane bookPane = createBookPanel(book);
+            VBox bookPane = createBookPanel(book);
             booksContainer.getChildren().add(bookPane);
         }
     }
 
-    private AnchorPane createBookPanel(Books book) {
+    private VBox createBookPanel(Books book) {
+        // Create an HBox to hold the book panels side by side
+        VBox bookPanelContainer = new VBox(5);  // 10 is the gap between the panels
+        bookPanelContainer.setStyle("-fx-background-color: #F2C6B6; -fx-border-radius: 5; -fx-padding: 5;");
+
+        // Book Panel for the individual book
         AnchorPane bookPanel = new AnchorPane();
-        bookPanel.setPrefSize(192, 50);
-        bookPanel.setStyle("-fx-background-color: #D8BFD8; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 0;");
+        bookPanel.setPrefSize(150, 10);
+        bookPanel.setStyle("-fx-background-color: #F2C6B6; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 5;");
 
-
+        // ImageView for the book
         ImageView imageView = new ImageView();
         imageView.setFitHeight(170);
         imageView.setFitWidth(75);
@@ -356,7 +362,7 @@ public class allBooksController {
         viewDetailsButton.setLayoutX(96);
         viewDetailsButton.setLayoutY(80);
         viewDetailsButton.setPrefSize(100, 20);
-        viewDetailsButton.setStyle("-fx-background-color: #CFD6C4; -fx-text-fill: WHITE;");
+        viewDetailsButton.setStyle("-fx-background-color: #657166; -fx-text-fill: WHITE;");
         viewDetailsButton.setOnAction(event -> {
             try {
                 viewDetails(book);
@@ -365,10 +371,13 @@ public class allBooksController {
             }
         });
 
-        // Add components to the panel
+        // Add components to the individual book panel
         bookPanel.getChildren().addAll(imageView, title, viewDetailsButton);
 
-        return bookPanel;
+        // Add the book panel to the HBox container
+        bookPanelContainer.getChildren().add(bookPanel);
+
+        return bookPanelContainer;
     }
 
     private void searchBook(String searchText) {
