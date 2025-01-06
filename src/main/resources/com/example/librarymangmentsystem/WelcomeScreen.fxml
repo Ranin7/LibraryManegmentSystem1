@@ -75,7 +75,7 @@
                 </ImageView>
             </children>
         </Pane>
-        <Label rotate="-15.0" text="OR" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="278.0">
+        <Label text="OR" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="278.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="33.0" />
             </font>

@@ -17,7 +17,6 @@ public class WelcomeScreenController {
 
     @FXML
     private void handleLibrarianButton() throws IOException {
-        // Set the user role to "Librarian" before loading the login screen
         UserSession.getInstance().setUserRole("Librarian");
         loadLoginScreen();
     }
@@ -38,7 +37,7 @@ public class WelcomeScreenController {
     }
 
     private void loadDashboard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AllBooks.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) userButton.getScene().getWindow();
         stage.setTitle("Dashboard");

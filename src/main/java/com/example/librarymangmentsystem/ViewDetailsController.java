@@ -33,6 +33,7 @@ public class ViewDetailsController {
         stage.setScene(new Scene(root));
     }
 
+
     @FXML
     public void goTohistory(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("historyForBook.fxml"));
@@ -74,6 +75,14 @@ public class ViewDetailsController {
 
     @FXML
     public void initialize(int bookID) {
+        String userRole = UserSession.getInstance().getUserRole();
+
+        if ("Librarian".equals(userRole)) {
+            history.setVisible(true);  // Show the button if the user is a Librarian
+        } else if ("User".equals(userRole)) {
+            history.setVisible(false);  // Hide the button if the user is a User
+        }
+
 
         this.bookID = bookID;
         loadBookDetails();

@@ -124,6 +124,22 @@ public class allBooksController {
 
     @FXML
     public void initialize() {
+        String userRole = UserSession.getInstance().getUserRole();
+
+        allBook.setOnAction(event -> {
+            try {
+                if ("Librarian".equals(userRole)) {
+                    // Load Dashboard for Librarian
+                    loadScene("Dashboard.fxml");
+                } else if ("User".equals(userRole)) {
+                    // Load Welcome Screen for User
+                    loadScene("WelcomeScreen.fxml");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         setupTableView();
         loadFilterOptions();
         setupHibernate();
@@ -145,10 +161,6 @@ public class allBooksController {
             }
         });
 
-
-
-
-
         genreComboBox.setOnAction(e -> applyFilters());
         authorComboBox.setOnAction(e -> applyFilters());
         publisherYearComboBox.setOnAction(e -> applyFilters());
@@ -161,6 +173,14 @@ public class allBooksController {
             filterVBox.setVisible(false);
             filterVBox.setManaged(false);
         }
+    }
+    private void loadScene(String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) allBook.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -198,13 +218,13 @@ public class allBooksController {
 
     private void loadFilterOptions() {
         if (genreComboBox != null) {
-            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "History","Novel","Psychology","Political", "Children's Stories"));
+            genreComboBox.setItems(FXCollections.observableArrayList("All", "Sci-Fi", "Animals", "History","Novel","Psychology","Political", "Children's Stories"));
         }
         if (authorComboBox != null) {
-            authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover"));
+            authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover","Susanna Clarke","Natalie Babbitt"));
         }
         if (publisherYearComboBox != null) {
-            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996", "2007","2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015",
+            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1975","1995","1960","1969","1996", "2007","2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015",
                     "2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"));
         }
         if (availabilityStatusComboBox != null) {
@@ -302,12 +322,12 @@ public class allBooksController {
 
     private AnchorPane createBookPanel(Books book) {
         AnchorPane bookPanel = new AnchorPane();
-        bookPanel.setPrefSize(192, 110);
-        bookPanel.setStyle("-fx-background-color: #FDE8D3; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 5;");
+        bookPanel.setPrefSize(192, 50);
+        bookPanel.setStyle("-fx-background-color: #D8BFD8; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 0;");
 
 
         ImageView imageView = new ImageView();
-        imageView.setFitHeight(110);
+        imageView.setFitHeight(170);
         imageView.setFitWidth(75);
         imageView.setLayoutX(5);
         imageView.setLayoutY(25); // Added top margin here
@@ -327,15 +347,15 @@ public class allBooksController {
         // Book Title
         Text title = new Text(book.getBookName() != null ? book.getBookName() : "Unknown Title");
         title.setLayoutX(97);
-        title.setLayoutY(33);
-        title.setWrappingWidth(74);
-        title.setStyle("-fx-font-size: 10; -fx-font-family: 'System Bold Italic';");
+        title.setLayoutY(40);
+        title.setWrappingWidth(160);
+        title.setStyle("-fx-font-size: 16; -fx-font-family: 'System Bold Italic';");
 
         // View Details Button
         Button viewDetailsButton = new Button("View Details");
         viewDetailsButton.setLayoutX(96);
-        viewDetailsButton.setLayoutY(67);
-        viewDetailsButton.setPrefSize(80, 20);
+        viewDetailsButton.setLayoutY(80);
+        viewDetailsButton.setPrefSize(100, 20);
         viewDetailsButton.setStyle("-fx-background-color: #CFD6C4; -fx-text-fill: WHITE;");
         viewDetailsButton.setOnAction(event -> {
             try {
