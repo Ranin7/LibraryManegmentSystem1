@@ -90,8 +90,5 @@ public class Book {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
 }

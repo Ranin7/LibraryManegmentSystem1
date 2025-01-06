@@ -2,7 +2,7 @@ package com.example.librarymangmentsystem;
 import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.Reservation;
 import com.example.librarymangmentsystem.models.User;
-import com.example.librarymangmentsystem.models.services.BookDOAImp;
+import com.example.librarymangmentsystem.models.services.BookDAOImp;
 import com.example.librarymangmentsystem.models.services.ResDAOImp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,7 +82,7 @@ public class AddReservationController {
     }
 
     private void loadTableData() {
-        BookDOAImp bookDOAImp = new BookDOAImp();
+        BookDAOImp bookDOAImp = new BookDAOImp();
         booksList = FXCollections.observableArrayList(bookDOAImp.getAll());
         tableforbook.setItems(booksList);
     }

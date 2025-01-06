@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem;
 
 import com.example.librarymangmentsystem.models.Book;
-import com.example.librarymangmentsystem.models.services.BookDOAImp;
+import com.example.librarymangmentsystem.models.services.BookDAOImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,7 +77,7 @@ public class BookController {
         books.setPublicationYear(publication);
         books.setAvailable(availableStatus);
         books.setImage(imageData);
-        BookDOAImp bookDAO = new BookDOAImp();
+        BookDAOImp bookDAO = new BookDAOImp();
         bookDAO.save(books);
 
         clearFields();

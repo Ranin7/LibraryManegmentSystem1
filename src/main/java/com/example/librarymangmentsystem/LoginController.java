@@ -6,11 +6,9 @@ import com.example.librarymangmentsystem.models.interfaces.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.prefs.Preferences;
@@ -26,9 +24,19 @@ public class LoginController {
     @FXML
     private CheckBox rememberMeCheckBox;
 
+    @FXML
+    private Button backButton;
+
+
     private UserDAO userDAO = new UserDAOImpl();
 
     private Preferences preferences = Preferences.userNodeForPackage(LoginController.class);
+    private String expectedRole;
+
+    public void setRole(String role) {
+        this.expectedRole = role;
+    }
+
 
     @FXML
     public void initialize() {
@@ -53,27 +61,33 @@ public class LoginController {
         User user = userDAO.getUserByUsername(username);
         if (user != null) {
             String roleName = user.getRole().getRoleName();
-            if (roleName.equals("User")) {
-                goToPage(event, "BooksPage.fxml");
-                saveUserPreferences(username, password);
-            } else if (roleName.equals("Admin") || roleName.equals("Librarian")) {
-                if (password.isEmpty()) {
-                    showAlert("Login Failed", "Password cannot be empty for Admin or Librarian.", Alert.AlertType.ERROR);
-                    return;
-                }
-                if (user.getPassword().equals(password)) {
+            // Check if the user role matches the expected role
+            if (roleName.equals(expectedRole)) {
+                if (roleName.equals("User")) {
+                    goToPage(event, "BooksPage.fxml");
                     saveUserPreferences(username, password);
-                    goToPage(event, "dashboard.fxml");
+                } else if (roleName.equals("Admin") || roleName.equals("Librarian")) {
+                    if (password.isEmpty()) {
+                        showAlert("Login Failed", "Password cannot be empty for Admin or Librarian.", Alert.AlertType.ERROR);
+                        return;
+                    }
+                    if (user.getPassword().equals(password)) {
+                        saveUserPreferences(username, password);
+                        goToPage(event, "dashboard.fxml");
+                    } else {
+                        showAlert("Login Failed", "Invalid password.", Alert.AlertType.ERROR);
+                    }
                 } else {
-                    showAlert("Login Failed", "Invalid password.", Alert.AlertType.ERROR);
+                    showAlert("Login Failed", "User role is not recognized.", Alert.AlertType.ERROR);
                 }
             } else {
-                showAlert("Login Failed", "User role is not recognized.", Alert.AlertType.ERROR);
+                showAlert("Login Failed", "You are attempting to log in with the wrong role. Please try again.", Alert.AlertType.ERROR);
             }
         } else {
             showAlert("Login Failed", "Invalid username.", Alert.AlertType.ERROR);
         }
     }
+
 
     private void saveUserPreferences(String username, String password) {
         if (rememberMeCheckBox.isSelected()) {
@@ -118,5 +132,13 @@ public class LoginController {
         } catch (IOException e) {
             showAlert("Navigation Error", "Failed to load the Reset Password page: " + e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+    @FXML
+    public void backToWelcomeScreen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WelcomeScreen.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 }

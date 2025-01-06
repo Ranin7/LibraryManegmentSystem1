@@ -83,9 +83,6 @@ public class Reservation {
         AnotherB = anotherB;
     }
 
-    public Book getBookid() {
-        return bookid;
-    }
 
     public void setBookid(Book bookid) {
         this.bookid = bookid;

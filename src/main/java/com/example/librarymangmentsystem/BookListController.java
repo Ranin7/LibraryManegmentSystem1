@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem;
 
 import com.example.librarymangmentsystem.models.Book;
-import com.example.librarymangmentsystem.models.services.BookDOAImp;
+import com.example.librarymangmentsystem.models.services.BookDAOImp;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,10 +47,7 @@ public class BookListController {
 
     @FXML
     private Button back;
-    @FXML
-    private Button update;
-    @FXML
-    private Button done;
+
 
     @FXML
     private TextField searchField;
@@ -70,7 +67,7 @@ public class BookListController {
     }
 
     public void loadBooks() {
-        BookDOAImp bookDAO = new BookDOAImp();
+        BookDAOImp bookDAO = new BookDAOImp();
         booksList = FXCollections.observableArrayList(bookDAO.getAll());
         booksTable.setItems(booksList);
     }
@@ -200,7 +197,7 @@ public class BookListController {
             System.out.println("No changes to save.");
             return;
         }
-        BookDOAImp bookDAO = new BookDOAImp();
+        BookDAOImp bookDAO = new BookDAOImp();
         for (Book books : modifiedBooks) {
             System.out.println("Saving changes for book: " + books);
             bookDAO.update(books);

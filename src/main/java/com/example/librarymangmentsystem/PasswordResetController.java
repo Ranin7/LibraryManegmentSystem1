@@ -111,7 +111,7 @@ public class PasswordResetController {
 
     private void navigateToLoginPage() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("WelcomeScreen.fxml"));
             Scene loginScene = new Scene(loader.load());
             Stage currentStage = (Stage) codeField.getScene().getWindow();
             currentStage.setScene(loginScene);

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
@@ -12,12 +13,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.LoginController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@left.jpeg" />
+                <Image url="@Images/left.jpeg" />
             </image>
             <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
             <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
@@ -25,7 +25,7 @@
         </ImageView>
         <ImageView fitHeight="400.0" fitWidth="117.0" layoutX="483.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@right.jpeg" />
+                <Image url="@Images/right.jpeg" />
             </image>
             <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
             <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
@@ -67,7 +67,7 @@
             <AnchorPane.bottomAnchor>70.0</AnchorPane.bottomAnchor>
         </Button>
 
-        <CheckBox layoutX="169.0" layoutY="244.0" mnemonicParsing="false" style="-fx-box-border: #657166; -fx-mark-color: #657166;" text="Remember Me" fx:id="rememberMeCheckBox">
+        <CheckBox fx:id="rememberMeCheckBox" layoutX="169.0" layoutY="244.0" mnemonicParsing="false" style="-fx-box-border: #657166; -fx-mark-color: #657166;" text="Remember Me">
             <AnchorPane.topAnchor>244.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>169.0</AnchorPane.leftAnchor>
         </CheckBox>
@@ -79,19 +79,20 @@
             <AnchorPane.topAnchor>170.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>168.0</AnchorPane.leftAnchor>
         </Label>
-        <TextField  promptText="Enter your username" fx:id="userNameField" layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
+        <TextField fx:id="userNameField" layoutX="167.0" layoutY="126.0" prefHeight="34.0" prefWidth="262.0" promptText="Enter your username" style="-fx-border-color: #bfbfbf; -fx-background-color: #ececec; -fx-border-radius: 4;">
             <AnchorPane.topAnchor>126.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
         </TextField>
-        <PasswordField promptText="Enter your password" fx:id="passwordField" layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
+        <PasswordField fx:id="passwordField" layoutX="167.0" layoutY="188.0" prefHeight="34.0" prefWidth="262.0" promptText="Enter your password" style="-fx-border-color: #bfbfbf; -fx-border-radius: 4; -fx-background-color: #ececec;">
             <AnchorPane.topAnchor>188.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>167.0</AnchorPane.leftAnchor>
             <AnchorPane.rightAnchor>167.0</AnchorPane.rightAnchor>
-        </PasswordField >
-        <Button fx:id="forgetPasswordButton" layoutX="329.0" layoutY="240.0" mnemonicParsing="false" style="-fx-background-color: #efefef;" text="Forget Password?" onAction="#handleForgetPassword">
+        </PasswordField>
+        <Button fx:id="forgetPasswordButton" layoutX="329.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleForgetPassword" style="-fx-background-color: #efefef;" text="Forget Password?">
             <AnchorPane.topAnchor>240.0</AnchorPane.topAnchor>
             <AnchorPane.leftAnchor>329.0</AnchorPane.leftAnchor>
         </Button>
+      <Button fx:id="backButton" layoutX="453.0" mnemonicParsing="false" onAction="#backToWelcomeScreen" style="-fx-background-color: #657166;" text="Back" textFill="WHITE" />
     </children>
 </AnchorPane>

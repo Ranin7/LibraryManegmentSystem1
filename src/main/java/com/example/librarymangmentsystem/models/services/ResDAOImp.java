@@ -53,15 +53,7 @@ public class ResDAOImp implements ResDAO {
     }
 
 
-    @Override
-    public Reservation getRes(int id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Reservation.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+
 
     @Override
     public List<Reservation> getAll() {

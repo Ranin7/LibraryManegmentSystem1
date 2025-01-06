@@ -27,10 +27,6 @@ public class Role {
     public String getRoleName() {
         return roleName;
     }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     @Override
@@ -38,11 +34,5 @@ public class Role {
         return roleName;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }
