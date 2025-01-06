@@ -80,5 +80,21 @@
                 <Font name="Arial Rounded MT Bold" size="33.0" />
             </font>
         </Label>
+      <Button fx:id="AdminButton" layoutX="467.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleAdminButton" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Admin" textFill="#fde8d3">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+         <effect>
+            <Blend mode="OVERLAY">
+               <topInput>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.3960784375667572" green="0.4431372582912445" blue="0.4000000059604645" />
+                     </color>
+                  </DropShadow>
+               </topInput>
+            </Blend>
+         </effect>
+      </Button>
     </children>
 </AnchorPane>

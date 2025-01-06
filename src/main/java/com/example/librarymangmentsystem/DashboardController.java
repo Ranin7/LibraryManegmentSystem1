@@ -57,17 +57,20 @@ public class DashboardController implements Initializable {
 
 
 
-    private void checkPermissions() {
-        if (addBookB != null) addBookB.setDisable(!userPermissionIds.contains(1));  // Add Book
-        if (addReservationB != null) addReservationB.setDisable(!userPermissionIds.contains(10));  // Add Reservation
-        if (viewDetailsB != null) viewDetailsB.setDisable(!userPermissionIds.contains(15));  // View Details
-        if (allBooksB != null) allBooksB.setDisable(!userPermissionIds.contains(14));  // All Books
-        if (historyB != null) historyB.setDisable(!userPermissionIds.contains(11));  // View History
-        if (createAccountB != null) createAccountB.setDisable(!userPermissionIds.contains(16));  // Create Account
-        if (updateBook != null) updateBook.setDisable(!userPermissionIds.contains(9));  // UpdateBook
-        if (HistoryByBookB != null) HistoryByBookB.setDisable(!userPermissionIds.contains(12));  // historyByBook
-        if (reservation != null) reservation.setDisable(!userPermissionIds.contains(13));  // reservation
-    }
+
+        private void checkPermissions() {
+            if (addBookB != null) addBookB.setDisable(!userPermissionIds.contains(1));  // Add Book
+            if (addReservationB != null) addReservationB.setDisable(!userPermissionIds.contains(10));  // Add Reservation
+            if (viewDetailsB != null) viewDetailsB.setDisable(!userPermissionIds.contains(15));  // View Details
+            if (allBooksB != null) allBooksB.setDisable(!userPermissionIds.contains(14));  // All Books
+            if (historyB != null) historyB.setDisable(!userPermissionIds.contains(11));  // View History
+            if (createAccountB != null) createAccountB.setDisable(!userPermissionIds.contains(16));  // Create Account (only for Admin)
+            if (updateBook != null) updateBook.setDisable(!userPermissionIds.contains(9));  // UpdateBook
+            if (HistoryByBookB != null) HistoryByBookB.setDisable(!userPermissionIds.contains(12));  // historyByBook
+            if (reservation != null) reservation.setDisable(!userPermissionIds.contains(13));  // reservation
+        }
+
+
 
 
     private boolean hasPermission(int permissionId) {

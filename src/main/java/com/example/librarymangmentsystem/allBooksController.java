@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem;
 //commenttest
 import com.example.librarymangmentsystem.models.Book;
-import com.example.librarymangmentsystem.models.services.BookDOAImp;
+import com.example.librarymangmentsystem.models.services.BookDAOImp;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -114,10 +114,10 @@ public class allBooksController {
     private final ObservableList<Book> booksList;
 
 
-    private BookDOAImp bookDAO;
+    private BookDAOImp bookDAO;
 
     public allBooksController() {
-        bookDAO = new BookDOAImp();
+        bookDAO = new BookDAOImp();
         booksList = FXCollections.observableArrayList(bookDAO.getAll());
     }
 

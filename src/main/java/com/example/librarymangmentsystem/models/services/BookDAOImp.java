@@ -1,7 +1,7 @@
 package com.example.librarymangmentsystem.models.services;
 
 import com.example.librarymangmentsystem.models.Book;
-import com.example.librarymangmentsystem.models.interfaces.BookDOA;
+import com.example.librarymangmentsystem.models.interfaces.BookDAO;
 import com.example.librarymangmentsystem.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,12 +10,12 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class BookDOAImp implements BookDOA {
+public class BookDAOImp implements BookDAO {
 
     private HibernateUtil hibernateUtil;
     private SessionFactory sessionFactory;
 
-    public BookDOAImp() {
+    public BookDAOImp() {
         hibernateUtil = HibernateUtil.getInstance();
         sessionFactory = hibernateUtil.getSessionFactory();
     }
