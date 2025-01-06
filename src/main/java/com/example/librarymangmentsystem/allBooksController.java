@@ -1,5 +1,5 @@
 package com.example.librarymangmentsystem;
-//commenttest
+
 import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.services.BookDAOImp;
 import javafx.beans.value.ObservableValue;
@@ -134,6 +134,9 @@ public class allBooksController {
                 } else if ("User".equals(userRole)) {
                     // Load Welcome Screen for User
                     loadScene("WelcomeScreen.fxml");
+                } else if ("Admin".equals(userRole)) {
+                    // Load Welcome Screen for User
+                    loadScene("Dashboard.fxml");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -323,12 +326,12 @@ public class allBooksController {
     private VBox createBookPanel(Book book) {
         // Create an HBox to hold the book panels side by side
         VBox bookPanelContainer = new VBox(5);  // 10 is the gap between the panels
-        bookPanelContainer.setStyle("-fx-background-color: #F2C6B6; -fx-border-radius: 5; -fx-padding: 5;");
+        bookPanelContainer.setStyle("-fx-background-color:  #CFD6C4; -fx-border-radius: 5; -fx-padding: 5;");
 
         // Book Panel for the individual book
         AnchorPane bookPanel = new AnchorPane();
         bookPanel.setPrefSize(150, 10);
-        bookPanel.setStyle("-fx-background-color: #F2C6B6; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 5;");
+        bookPanel.setStyle("-fx-background-color:   white; -fx-border-radius: 5; -fx-padding: 5; -fx-spacing: 5;");
 
         // ImageView for the book
         ImageView imageView = new ImageView();
@@ -370,10 +373,8 @@ public class allBooksController {
             }
         });
 
-        // Add components to the individual book panel
         bookPanel.getChildren().addAll(imageView, title, viewDetailsButton);
 
-        // Add the book panel to the HBox container
         bookPanelContainer.getChildren().add(bookPanel);
 
         return bookPanelContainer;

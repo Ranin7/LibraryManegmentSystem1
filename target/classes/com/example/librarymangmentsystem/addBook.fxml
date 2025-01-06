@@ -34,7 +34,7 @@
                     </image>
                 </ImageView>
 
-                <Button fx:id="back1" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#showHomePage" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="back" textFill="#FFFFFF">
+                <Button fx:id="back1" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#showHomePage" style="-fx-background-color: #657138; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="Back" textFill="#FFFFFF">
                     <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                     </font>

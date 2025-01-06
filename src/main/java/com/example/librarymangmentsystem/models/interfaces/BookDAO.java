@@ -8,8 +8,6 @@ public interface BookDAO {
 
     public int save(Book books);
     public void update(Book books);
-    public void delete(int id);
-    public Book getBook(int id);
     public List<Book> getAll();
 
 }

@@ -73,7 +73,7 @@
             <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
             <AnchorPane.bottomAnchor>0.0</AnchorPane.bottomAnchor>
             <image>
-                <Image url="@SignUp.jpg" />
+                <Image url="@Images/SignUp.jpg" />
             </image>
         </ImageView>
         <Button fx:id="back" layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #657166;" text="Back" textFill="WHITE" />

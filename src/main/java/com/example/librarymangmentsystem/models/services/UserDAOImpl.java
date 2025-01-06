@@ -41,18 +41,6 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
-    @Override
-    public User getUserByEmail(String email) {
-        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
-            String hql = "FROM User WHERE email = :email";
-            Query<User> query = session.createQuery(hql, User.class);
-            query.setParameter("email", email);
-            return query.uniqueResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     @Override
     public boolean updatePassword(String email, String newPassword) {
@@ -100,16 +88,5 @@ public class UserDAOImpl implements UserDAO {
         return false;
     }
 
-    @Override
-    public List<User> getUsersByRole(Role role) {
-        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
-            String hql = "FROM User WHERE role.id = :roleId";
-            Query<User> query = session.createQuery(hql, User.class);
-            query.setParameter("roleId", role);
-            return query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 }

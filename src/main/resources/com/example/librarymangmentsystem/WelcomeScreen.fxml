@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.WelcomeScreenController">
     <children>
-        <Button fx:id="userButton" mnemonicParsing="false" onAction="#handleUserButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="234.0">
+        <Button fx:id="userButton" layoutX="337.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleUserButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="User" textFill="#fde8d3" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="337.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -30,7 +30,7 @@
                 </Blend>
             </effect>
         </Button>
-        <Button fx:id="librarianButton" mnemonicParsing="false" onAction="#handleLibrarianButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Librarian" textFill="#fde8d3" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="14.4">
+        <Button fx:id="librarianButton" layoutX="235.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleLibrarianButton" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Librarian" textFill="#fde8d3" AnchorPane.bottomAnchor="122.0" AnchorPane.rightAnchor="219.39999999999998">
             <font>
                 <Font name="Arial Rounded MT Bold" size="20.0" />
             </font>
@@ -70,17 +70,17 @@
                 </Label>
                 <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="55" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@logo.png" />
+                        <Image url="@Images/logo.png" />
                     </image>
                 </ImageView>
             </children>
         </Pane>
-        <Label text="OR" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="278.0">
+        <Label layoutX="383.0" layoutY="278.0" text="OR" AnchorPane.leftAnchor="383.0" AnchorPane.topAnchor="278.0">
             <font>
                 <Font name="Arial Rounded MT Bold" size="33.0" />
             </font>
         </Label>
-      <Button fx:id="AdminButton" layoutX="467.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleAdminButton" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Admin" textFill="#fde8d3">
+      <Button fx:id="AdminButton" layoutX="439.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleAdminButton" prefHeight="36.0" prefWidth="146.0" style="-fx-background-color: #657166; -fx-background-radius: 6;" text="Admin" textFill="#fde8d3">
          <font>
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>

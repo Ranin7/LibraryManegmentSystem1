@@ -13,7 +13,7 @@
     <children>
         <HBox alignment="CENTER" minHeight="10.0" prefHeight="25.0" prefWidth="600.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToHome" prefHeight="18.0" prefWidth="70.0" style="-fx-background-color: #b3c3b4;" text="Back" textAlignment="CENTER" textFill="#657166" HBox.hgrow="ALWAYS">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToHome" prefHeight="18.0" prefWidth="70.0" style="-fx-background-color: #657166;" text="Back" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <font>
                         <Font name="Arial Bold" size="10.0" />
                     </font>

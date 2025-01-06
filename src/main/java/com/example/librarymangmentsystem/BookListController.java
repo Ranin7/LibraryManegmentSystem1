@@ -47,10 +47,7 @@ public class BookListController {
 
     @FXML
     private Button back;
-    @FXML
-    private Button update;
-    @FXML
-    private Button done;
+
 
     @FXML
     private TextField searchField;

@@ -20,10 +20,10 @@ public class WelcomeScreenController {
 
     @FXML
     private void handleLibrarianButton() throws IOException {
-        int roleId = getRoleIdFromDatabase("Librarian"); // Replace with actual database check
-        if (roleId == 2) {  // Check if the role ID corresponds to Librarian (2)
-            UserSession.getInstance().setUserRole(2);  // Set the role as Librarian
-            loadLoginScreen("Librarian");  // Pass the role as parameter
+        int roleId = getRoleIdFromDatabase("Librarian");
+        if (roleId == 2) {
+            UserSession.getInstance().setUserRole(2);
+            loadLoginScreen("Librarian");
         } else {
             showRoleError("You do not have the correct permissions.");
         }
@@ -31,10 +31,10 @@ public class WelcomeScreenController {
 
     @FXML
     private void handleAdminButton() throws IOException {
-        int roleId = getRoleIdFromDatabase("Admin"); // Replace with actual database check
-        if (roleId == 1) {  // Check if the role ID corresponds to Admin (1)
-            UserSession.getInstance().setUserRole(1);  // Set the role as Admin
-            loadLoginScreen("Admin");  // Pass the role as parameter
+        int roleId = getRoleIdFromDatabase("Admin");
+        if (roleId == 1) {
+            UserSession.getInstance().setUserRole(1);
+            loadLoginScreen("Admin");
         } else {
             showRoleError("You do not have the correct permissions.");
         }
@@ -43,7 +43,7 @@ public class WelcomeScreenController {
 
     @FXML
     private void handleUserButton() throws IOException {
-        int roleId = getRoleIdFromDatabase("User"); // Replace with actual database check
+        int roleId = getRoleIdFromDatabase("User");
         if (roleId == 3) {
             UserSession.getInstance().setUserRole(3);
             loadDashboard();
@@ -52,7 +52,6 @@ public class WelcomeScreenController {
         }
     }
 
-    // Method to simulate fetching role ID from database based on username (for demo purposes)
     private int getRoleIdFromDatabase(String roleName) {
 
         if(roleName.equals("Librarian")) return 2;
@@ -61,7 +60,7 @@ public class WelcomeScreenController {
 
         }
 
-        return 0;  // Simulating no match (replace with real database check)
+        return 0;
     }
 
     // Show error message when role mismatch occurs
@@ -78,7 +77,7 @@ public class WelcomeScreenController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(loader.load());
         LoginController loginController = loader.getController();
-        loginController.setRole(role);  // Set the role in the login controller
+        loginController.setRole(role);
         Stage stage = (Stage) librarianButton.getScene().getWindow();
         stage.setTitle("Login");
         stage.setScene(scene);

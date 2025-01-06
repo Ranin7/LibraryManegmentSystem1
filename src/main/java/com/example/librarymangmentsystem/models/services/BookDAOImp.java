@@ -39,23 +39,7 @@ public class BookDAOImp implements BookDAO {
         session.close();
     }
 
-    @Override
-    public void delete(int id) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Book books = session.get(Book.class, id);
-        if (books != null) {
-            session.delete(books);
-        }
-        session.getTransaction().commit();
-        session.close();
-    }
 
-    @Override
-    public Book getBook(int id) {
-        Session session = sessionFactory.openSession();
-        return session.get(Book.class, id);
-    }
 
     @Override
     public List<Book> getAll() {

@@ -4,21 +4,42 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="368.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.DashboardController">
+<AnchorPane prefHeight="400.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.DashboardController">
    <children>
-      <ImageView fitHeight="414.0" fitWidth="602.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+      <!-- Background Image -->
+      <ImageView fitHeight="400.0" fitWidth="602.0" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@frame1.jpg" />
+            <Image url="@Images/frame1.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="logoutB" layoutX="316.0" layoutY="255.0" mnemonicParsing="false" onAction="#logout" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Logout" textFill="WHITE" />
-      <Button fx:id="createAccountB" layoutX="183.0" layoutY="255.0" mnemonicParsing="false" onAction="#goToCreateAccount" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Create Account" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="historyB" layoutX="395.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToHistory" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="History" textFill="WHITE" />
-      <Button fx:id="addReservationB" layoutX="251.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Reservation" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="allBooksB" layoutX="109.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAllBooks" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="All Books" textFill="WHITE" />
-      <Button fx:id="reservation" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToReservation" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Reservations" textFill="WHITE" />
-      <Button fx:id="updateBook" layoutX="395.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToBooksView" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Update Book Information" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="addBookB" layoutX="251.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAddBook" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Book" textFill="WHITE" />
+
+      <!-- Buttons Overlay -->
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="602.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <!-- Buttons grouped into rows -->
+         <VBox alignment="CENTER" spacing="10.0">
+            <!-- Row 1 -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <Button fx:id="allBooksB" mnemonicParsing="false" onAction="#goToAllBooks" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="All Books" textFill="WHITE" />
+               <Button fx:id="addBookB" mnemonicParsing="false" onAction="#goToAddBook" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Book" textFill="WHITE" />
+               <Button fx:id="updateBook" mnemonicParsing="false" onAction="#goToBooksView" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Update Book Information" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            </HBox>
+
+            <!-- Row 2 -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <Button fx:id="reservation" mnemonicParsing="false" onAction="#goToReservation" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Reservations" textFill="WHITE" />
+               <Button fx:id="addReservationB" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Reservation" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+               <Button fx:id="historyB" mnemonicParsing="false" onAction="#goToHistory" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="History" textFill="WHITE" />
+            </HBox>
+
+            <!-- Row 3 -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <Button fx:id="createAccountB" mnemonicParsing="false" onAction="#goToCreateAccount" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Create Account" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+               <Button fx:id="logoutB" mnemonicParsing="false" onAction="#logout" prefHeight="68.0" prefWidth="120.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Logout" textFill="WHITE" />
+            </HBox>
+         </VBox>
+      </VBox>
    </children>
 </AnchorPane>

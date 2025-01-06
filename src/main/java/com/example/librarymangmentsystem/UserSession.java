@@ -8,12 +8,10 @@ public class UserSession {
     private String userRole;
     private Set<Integer> userPermissionIds;
 
-    // Private constructor to prevent instantiation
     private UserSession() {
         userPermissionIds = new HashSet<>();
     }
 
-    // Get the singleton instance
     public static UserSession getInstance() {
         if (instance == null) {
             instance = new UserSession();
@@ -21,9 +19,7 @@ public class UserSession {
         return instance;
     }
 
-    // Set the user role and load permissions based on user role ID
     public void setUserRole(int roleId) {
-        // Set the role based on the database ID (1 for Admin, 2 for Librarian)
         if (roleId == 1) {
             this.userRole = "Admin";
         } else if (roleId == 2) {
@@ -35,12 +31,10 @@ public class UserSession {
         loadPermissions(userRole);
     }
 
-    // Get the user role
     public String getUserRole() {
         return userRole;
     }
 
-    // Load permissions based on the user role
     private void loadPermissions(String role) {
         userPermissionIds.clear();
 
@@ -69,12 +63,9 @@ public class UserSession {
         }
     }
 
-    // Get permissions
     public Set<Integer> getUserPermissionIds() {
         return userPermissionIds;
     }
-
-    // Check if a permission exists
     public boolean hasPermission(int permissionId) {
         return userPermissionIds.contains(permissionId);
     }

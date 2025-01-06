@@ -34,7 +34,7 @@ public class LoginController {
     private String expectedRole;
 
     public void setRole(String role) {
-        this.expectedRole = role;  // Store the role (Admin or Librarian) passed from WelcomeScreenController
+        this.expectedRole = role;
     }
 
 

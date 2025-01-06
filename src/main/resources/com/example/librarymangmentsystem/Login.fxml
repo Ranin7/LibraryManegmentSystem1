@@ -17,7 +17,7 @@
     <children>
         <ImageView fitHeight="400.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@left.jpeg" />
+                <Image url="@Images/left.jpeg" />
             </image>
             <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
             <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
@@ -25,7 +25,7 @@
         </ImageView>
         <ImageView fitHeight="400.0" fitWidth="117.0" layoutX="483.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@right.jpeg" />
+                <Image url="@Images/right.jpeg" />
             </image>
             <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
             <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
