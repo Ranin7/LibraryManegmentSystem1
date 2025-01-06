@@ -44,6 +44,7 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         UserSession userSession = UserSession.getInstance();
         this.userRole = userSession.getUserRole();
         this.userPermissionIds = userSession.getUserPermissionIds();
