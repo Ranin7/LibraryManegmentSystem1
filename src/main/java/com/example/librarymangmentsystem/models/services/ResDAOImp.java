@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem.models.services;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.Reservation;
 import com.example.librarymangmentsystem.models.User;
 import com.example.librarymangmentsystem.models.interfaces.ResDAO;
@@ -29,11 +29,11 @@ public class ResDAOImp implements ResDAO {
         session.getTransaction().commit();
         session.close();
     }
-    public boolean updateBookStatus(Books book) {
+    public boolean updateBookStatus(Book book) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         try {
-            session.update(book);  // تحديث الكائن من نوع Books باستخدام Hibernate Session
+            session.update(book);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -75,16 +75,6 @@ public class ResDAOImp implements ResDAO {
     }
 
 
-//    @Override
-//    public List<Reservation> getAllB() {
-//        List<Reservation> res = null;
-//        try (Session session = sessionFactory.openSession()) {
-//            res = session.createQuery("FROM Reservation",Reservation.class).list();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return res;
-//    }
 
     @Override
     public boolean saveReservation(Reservation reservation) {
@@ -96,9 +86,9 @@ public class ResDAOImp implements ResDAO {
         return true;
     }
 
-    public Books getBookById(int bookId) {
+    public Book getBookById(int bookId) {
         try (Session session = sessionFactory.openSession()) {
-            return session.get(Books.class, bookId);
+            return session.get(Book.class, bookId);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -29,7 +29,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "bid" )
-    public Books bookid;
+    public Book bookid;
 
     @ManyToOne
     @JoinColumn(name="uid")
@@ -83,11 +83,11 @@ public class Reservation {
         AnotherB = anotherB;
     }
 
-    public Books getBookid() {
+    public Book getBookid() {
         return bookid;
     }
 
-    public void setBookid(Books bookid) {
+    public void setBookid(Book bookid) {
         this.bookid = bookid;
     }
 

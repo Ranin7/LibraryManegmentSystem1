@@ -95,7 +95,7 @@
 
 
         <!-- Buttons -->
-        <Button fx:id="book" layoutX="385.0" layoutY="400.0" onAction="#addBook" style="-fx-background-color: #657166; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="Add Book" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="135.0">
+        <Button fx:id="books" layoutX="385.0" layoutY="400.0" onAction="#addBook" style="-fx-background-color: #657166; -fx-background-radius: 20; -fx-font-size: 14px; -fx-font-family: Segoe UI Bold; -fx-font-weight: bold; -fx-font-style: italic;" text="Add Book" textFill="#FFFFFF" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="135.0">
             <font>
                 <Font name="Segoe UI Bold" size="14.0" />
             </font>

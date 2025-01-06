@@ -1,5 +1,5 @@
 package com.example.librarymangmentsystem;
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.Reservation;
 import com.example.librarymangmentsystem.models.User;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
@@ -43,14 +43,14 @@ public class AddReservationController {
     private Button back;
 
     @FXML
-    private TableView<Books> tableforbook;
+    private TableView<Book> tableforbook;
 
     @FXML
-    private TableColumn<Books, Integer> column1;
+    private TableColumn<Book, Integer> column1;
     @FXML
-    private TableColumn<Books, String> column2;
+    private TableColumn<Book, String> column2;
 
-    private ObservableList <Books> booksList;
+    private ObservableList <Book> booksList;
 
     @FXML
 
@@ -65,10 +65,10 @@ public class AddReservationController {
 
 
         tableforbook.setRowFactory(tv -> {
-            TableRow<Books> row = new TableRow<>();
+            TableRow<Book> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    Books selectedBook = row.getItem();
+                    Book selectedBook = row.getItem();
                     fillFieldsWithBookData(selectedBook);
                 }
             });
@@ -76,7 +76,7 @@ public class AddReservationController {
         });
     }
 
-    private void fillFieldsWithBookData(Books book) {
+    private void fillFieldsWithBookData(Book book) {
         bookid.setText(String.valueOf(book.getId()));
         bookname.setText(book.getBookName());
     }
@@ -90,9 +90,9 @@ public class AddReservationController {
     private void filterBooks(String searchText) {
         if (booksList == null) return;
 
-        ObservableList<Books> filteredList = FXCollections.observableArrayList();
+        ObservableList<Book> filteredList = FXCollections.observableArrayList();
 
-        for (Books book : booksList) {
+        for (Book book : booksList) {
 
             if (String.valueOf(book.getId()).contains(searchText) ||
                     book.getBookName().toLowerCase().contains(searchText.toLowerCase())) {
@@ -118,7 +118,7 @@ public class AddReservationController {
             String userName = uname.getText().trim();
 
             ResDAOImp resDAO = new ResDAOImp();
-            Books book = resDAO.getBookById(bookId);
+            Book book = resDAO.getBookById(bookId);
             if (book == null || !book.getBookName().equalsIgnoreCase(bookNameInput)) {
                 JOptionPane.showMessageDialog(null, "Error: Book ID and name do not match. Please check the entered information!");
                 return;

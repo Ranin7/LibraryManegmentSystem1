@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem.models.services;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.interfaces.BookDOA;
 import com.example.librarymangmentsystem.util.HibernateUtil;
 import org.hibernate.Session;
@@ -21,20 +21,20 @@ public class BookDOAImp implements BookDOA {
     }
 
     @Override
-    public int save(Books book) {
+    public int save(Book books) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(book);
+        session.save(books);
         session.getTransaction().commit();
         session.close();
-        return 1;  // Return an integer as per your original logic (e.g., indicating success)
+        return 1;
     }
 
     @Override
-    public void update(Books book) {
+    public void update(Book books) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.update(book);
+        session.update(books);
         session.getTransaction().commit();
         session.close();
     }
@@ -43,37 +43,29 @@ public class BookDOAImp implements BookDOA {
     public void delete(int id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Books book = session.get(Books.class, id);
-        if (book != null) {
-            session.delete(book);
+        Book books = session.get(Book.class, id);
+        if (books != null) {
+            session.delete(books);
         }
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public Books getBook(int id) {
+    public Book getBook(int id) {
         Session session = sessionFactory.openSession();
-        return session.get(Books.class, id);
+        return session.get(Book.class, id);
     }
 
     @Override
-    public List<Books> getAll() {
-        List<Books> books = null;
+    public List<Book> getAll() {
+        List<Book> books = null;
         try (Session session = sessionFactory.openSession()) {
-            books = session.createQuery("FROM Books", Books.class).list();
+            books = session.createQuery("FROM Book", Book.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return books;
     }
 
- /*   @Override
-    public Books findBook(Books book) {
-        Session session = sessionFactory.openSession();
-        // Use criteria or HQL to find the book
-        return session.createQuery("FROM Books WHERE title = :title", Books.class)
-                .setParameter("title", book.getTitle())  // Assuming you're searching by title or another field
-                .uniqueResult();
-    }*/
 }

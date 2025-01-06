@@ -1,15 +1,15 @@
 package com.example.librarymangmentsystem.models.interfaces;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 
 import java.util.List;
 
 public interface BookDOA {
 
-    public int save(Books book);
-    public void update(Books book);
+    public int save(Book books);
+    public void update(Book books);
     public void delete(int id);
-    public Books getBook(int id);
-    public List<Books> getAll();
+    public Book getBook(int id);
+    public List<Book> getAll();
 
 }

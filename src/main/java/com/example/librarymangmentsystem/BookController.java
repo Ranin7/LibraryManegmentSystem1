@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,15 +70,15 @@ public class BookController {
             }
         }
 
-        Books book = new Books();
-        book.setBookName(name);
-        book.setAuthor(author);
-        book.setGenre(genre);
-        book.setPublicationYear(publication);
-        book.setAvailable(availableStatus);
-        book.setImage(imageData);
+        Book books = new Book();
+        books.setBookName(name);
+        books.setAuthor(author);
+        books.setGenre(genre);
+        books.setPublicationYear(publication);
+        books.setAvailable(availableStatus);
+        books.setImage(imageData);
         BookDOAImp bookDAO = new BookDOAImp();
-        bookDAO.save(book);
+        bookDAO.save(books);
 
         clearFields();
     }
@@ -96,7 +96,7 @@ public class BookController {
     @FXML
     public void handleImageUpload(javafx.scene.input.MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", ".jpeg", ".gif", "*.bmp"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
         selectedImage = fileChooser.showOpenDialog(imageView.getScene().getWindow());
 
         if (selectedImage != null && selectedImage.exists()) {
@@ -114,3 +114,5 @@ public class BookController {
         alert.showAndWait();
     }
 }
+
+

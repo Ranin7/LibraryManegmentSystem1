@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.util.HibernateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +32,7 @@ public class ViewDetailsController {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
 
     @FXML
     public void goTohistory(ActionEvent event) throws IOException {
@@ -74,6 +75,14 @@ public class ViewDetailsController {
 
     @FXML
     public void initialize(int bookID) {
+        String userRole = UserSession.getInstance().getUserRole();
+
+        if ("Librarian".equals(userRole)) {
+            history.setVisible(true);
+        } else if ("User".equals(userRole)) {
+            history.setVisible(false);
+        }
+
 
         this.bookID = bookID;
         loadBookDetails();
@@ -81,9 +90,9 @@ public class ViewDetailsController {
     }
     private void loadBookDetails() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Books> query = session.createQuery("from Books where id = :bookID" , Books.class);
+            Query<Book> query = session.createQuery("from Book where id = :bookID" , Book.class);
             query.setParameter("bookID",bookID);
-            Books book = query.uniqueResult();
+            Book book = query.uniqueResult();
 
             if (book != null) {
                 titleLabel.setText(book.getBookName());
