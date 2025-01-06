@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="368.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.DashboardController">
    <children>
-      <ImageView fitHeight="414.0" fitWidth="602.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="414.0" fitWidth="602.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true"  >
          <image>
             <Image url="@frame1.jpg" />
          </image>

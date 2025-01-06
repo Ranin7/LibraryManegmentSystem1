@@ -96,7 +96,7 @@ public class BookController {
     @FXML
     public void handleImageUpload(javafx.scene.input.MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", ".jpeg", ".gif", "*.bmp"));
         selectedImage = fileChooser.showOpenDialog(imageView.getScene().getWindow());
 
         if (selectedImage != null && selectedImage.exists()) {

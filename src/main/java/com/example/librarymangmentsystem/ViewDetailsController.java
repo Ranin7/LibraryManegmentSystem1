@@ -14,13 +14,15 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
 import java.io.IOException;
 
 public class ViewDetailsController {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private Button history;
 
     @FXML
     public void backToHome(ActionEvent event) throws IOException {
@@ -30,6 +32,25 @@ public class ViewDetailsController {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
+    @FXML
+    public void goTohistory(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("historyForBook.fxml"));
+        Parent root = loader.load();
+
+        String bookName = titleLabel.getText();
+
+        HistoryForBookController controller = loader.getController();
+        controller.loadReservationsForBook(bookName);
+
+        Stage stage = (Stage) history.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+
+
+
+
+
 
     @FXML
     private Label titleLabel;
@@ -62,17 +83,17 @@ public class ViewDetailsController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<Books> query = session.createQuery("from Books where id = :bookID" , Books.class);
             query.setParameter("bookID",bookID);
-            Books books = query.uniqueResult();
+            Books book = query.uniqueResult();
 
-            if (books != null) {
-                titleLabel.setText(books.getBookName());
-                authorLabel.setText(books.getAuthor());
-                genreLabel.setText(books.getGenre());
-                publicationYearLabel.setText(books.getPublicationYear());
-                CheckAvailability.setText(books.getAvailable());
+            if (book != null) {
+                titleLabel.setText(book.getBookName());
+                authorLabel.setText(book.getAuthor());
+                genreLabel.setText(book.getGenre());
+                publicationYearLabel.setText(book.getPublicationYear());
+                CheckAvailability.setText(book.getAvailable());
 
-                if (books.getImage() != null) {
-                    Image image = new Image(new java.io.ByteArrayInputStream(books.getImage()));
+                if (book.getImage() != null) {
+                    Image image = new Image(new java.io.ByteArrayInputStream(book.getImage()));
                     BookImageView.setImage(image);
                 }
             }
@@ -81,4 +102,5 @@ public class ViewDetailsController {
             e.printStackTrace();
         }
     }
+
 }

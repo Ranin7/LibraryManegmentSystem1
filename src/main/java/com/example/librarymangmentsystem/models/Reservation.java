@@ -3,40 +3,38 @@ package com.example.librarymangmentsystem.models;
 import javax.persistence.*;
 
 @Entity
-    @Table(name = "reservation")
-    public class Reservation {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+@Table(name = "reservation")
+public class Reservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-        @Column(name = "BookName")
-        private String bookName;
+    @Column(name = "BookName")
+    private String bookName;
 
-        @Column(name = "ResDate")
-        private String ResDate;
+    @Column(name = "ResDate")
+    private String ResDate;
 
-        @Column(name = "ReturnDate")
-        private String ReturnDate;
+    @Column(name = "ReturnDate")
+    private String ReturnDate;
 
-        @Column(name = "UName")
-        private String UName;
+    @Column(name = "UName")
+    private String UName;
 
-        @Column(name = "AnotherB")
-        private String AnotherB;
-
-        @ManyToOne
-        @JoinColumn(name = "bid", nullable = false)
-        public Books bookid;
-
-        @ManyToOne
-        @JoinColumn(name="uid" ,nullable = false)
-        public User useri;
+    @Column(name = "AnotherB")
+    private String AnotherB;
+    @Column(name = "available")
+    private String available;
 
 
-    public Reservation() {
-        super();
+    @ManyToOne
+    @JoinColumn(name = "bid" )
+    public Books bookid;
 
-    }
+    @ManyToOne
+    @JoinColumn(name="uid")
+    public User user;
+
     public int getId() {
         return id;
     }
@@ -93,12 +91,19 @@ import javax.persistence.*;
         this.bookid = bookid;
     }
 
-    public User getUseri() {
-        return useri;
+    public User getUser() {
+        return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-    public void setUseri(User useri) {
-        this.useri = useri;
+    public String getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
     }
 }

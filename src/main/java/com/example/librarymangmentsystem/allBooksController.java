@@ -16,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -30,7 +29,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.io.ByteArrayInputStream;
 import javafx.scene.text.Text;
-import org.hibernate.query.Query;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class allBooksController {
@@ -109,11 +110,8 @@ public class allBooksController {
     @FXML
     private ListView<String> searchSuggestions;// New ListView for predictive suggestions
 
-    @FXML
-    private ListView<String> filteredSuggestions;
 
     private final ObservableList<Books> booksList;
-    private ObservableList<Books> filteredBooks;
 
 
     private BookDOAImp bookDAO;
@@ -126,22 +124,6 @@ public class allBooksController {
 
     @FXML
     public void initialize() {
-        String userRole = UserSession.getInstance().getUserRole();
-
-        allBook.setOnAction(event -> {
-            try {
-                if ("Librarian".equals(userRole)) {
-                    // Load Dashboard for Librarian
-                    loadScene("Dashboard.fxml");
-                } else if ("User".equals(userRole)) {
-                    // Load Welcome Screen for User
-                    loadScene("WelcomeScreen.fxml");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
         setupTableView();
         loadFilterOptions();
         setupHibernate();
@@ -154,7 +136,6 @@ public class allBooksController {
             updateSearchSuggestions(newValue);
         });
 
-
         searchSuggestions.setOnMouseClicked(event -> {
             String selectedSuggestion = searchSuggestions.getSelectionModel().getSelectedItem();
             if (selectedSuggestion != null) {
@@ -163,7 +144,6 @@ public class allBooksController {
                 searchSuggestions.setVisible(false); // Hide suggestions after selection
             }
         });
-
 
 
 
@@ -182,18 +162,9 @@ public class allBooksController {
             filterVBox.setManaged(false);
         }
     }
-    private void loadScene(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        AnchorPane root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) allBook.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     private void toggleFilterOptions() {
-        System.out.println("Filter button clicked!");
         if (filterVBox != null) {
             boolean isVisible = filterVBox.isVisible();
             filterVBox.setVisible(!isVisible);
@@ -227,16 +198,14 @@ public class allBooksController {
 
     private void loadFilterOptions() {
         if (genreComboBox != null) {
-            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "history", "Political", "Children's Stories"));
+            genreComboBox.setItems(FXCollections.observableArrayList("All", "Fiction", "Non-Fiction", "Sci-Fi", "Biography", "Animals", "History","Novel","Psychology","Political", "Children's Stories"));
         }
         if (authorComboBox != null) {
-            authorComboBox.setItems(FXCollections.observableArrayList("All", "Tom", "Alis", "Mohammed", "hassan", "Amjad", "Dostoyfiski", "ahlam","Haneen"));
+            authorComboBox.setItems(FXCollections.observableArrayList("All", "Mary Shelley","Tabitha Paige", "Steve Harvey", "Margaret Atwood", "Kurt Vonnegut", "Harper Lee", "George Orwell", "Colleen Hoover"));
         }
         if (publisherYearComboBox != null) {
-            publisherYearComboBox.setItems(FXCollections.observableArrayList("All", "2009", "2010"
-                    , "2011", "2012", "2013", "2014", "2015",
-                    "2016", "2017", "2018", "2019", "2020",
-                    "2021", "2022", "2023"));
+            publisherYearComboBox.setItems(FXCollections.observableArrayList("All","1800","1818","1995","1960","1969","1996", "2007","2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015",
+                    "2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"));
         }
         if (availabilityStatusComboBox != null) {
             availabilityStatusComboBox.setItems(FXCollections.observableArrayList("All", "Yes", "No", "Reserved"));
@@ -258,13 +227,11 @@ public class allBooksController {
             bookList.clear();
             ObservableList<Books> filtered = filterBooks(SelectedGenre, SelectedAuthor, SelectedPublisherYear, SelectedAvailabilityStatus);
             if (filtered.isEmpty()) {
-                bookList.addAll(booksList);  // Revert to all books if no match
+                bookList.addAll(booksList);
             } else {
                 bookList.addAll(filtered);
             }
             displayFilterBooks(bookList);
-
-            //bookList.addAll(fetchAllBooks());
 
 
         }
@@ -273,11 +240,11 @@ public class allBooksController {
     private void displayFilterBooks(ObservableList<Books> books) {
         booksContainer.getChildren().clear();
 
-        for (Books book : books) {
-            AnchorPane bookPane = createBookPanel(book);
-            booksContainer.getChildren().add(bookPane);
+            for (Books book : books) {
+                    AnchorPane bookPane = createBookPanel(book);
+                    booksContainer.getChildren().add(bookPane);
 
-        }
+            }
     }
 
 
@@ -300,7 +267,24 @@ public class allBooksController {
         return booksList.stream()
                 .filter(book -> (genre.equals("All") || book.getGenre().equalsIgnoreCase(genre)))
                 .filter(book -> (author.equals("All") || book.getAuthor().equalsIgnoreCase(author)))
-                .filter(book -> (year.equals("All") || book.getPublicationYear().equals(year)))
+                .filter(book -> {
+            if (year.equals("All")) {
+                return true;
+            }
+            String publicationYear = book.getPublicationYear();
+
+            if (publicationYear != null && !publicationYear.isEmpty()) {
+                try {
+                    LocalDate date = LocalDate.parse(publicationYear, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    return String.valueOf(date.getYear()).equals(year.trim());
+                } catch (DateTimeParseException e) {
+                    System.out.println("Error parsing date: " + publicationYear);
+                }
+            }
+            return false;
+        })
+
+
                 .filter(book -> (availability.equals("All") || book.getAvailable().equalsIgnoreCase(availability)))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }

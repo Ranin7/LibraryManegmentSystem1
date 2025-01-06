@@ -23,25 +23,22 @@
                 <TextField fx:id="uname" prefHeight="18.0" prefWidth="111.0" style="-fx-background-radius: 5;" AnchorPane.leftAnchor="167.0" AnchorPane.topAnchor="143.0" />
                 <Label style="-fx-text-fill: #657166;" text="ResDate" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="182.0" />
                 <Label style="-fx-text-fill: #657166;" text="ReturnDate" AnchorPane.leftAnchor="167.0" AnchorPane.topAnchor="182.0" />
-                <Button layoutX="60.0" layoutY="334.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="add res" textFill="WHITE" AnchorPane.bottomAnchor="40.39999999999998" AnchorPane.leftAnchor="60.0" />
-                <Button fx:id="updateres" layoutX="124.0" layoutY="334.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="update" textFill="WHITE" AnchorPane.bottomAnchor="40.39999999999998" AnchorPane.leftAnchor="124.0" />
+                <Button fx:id="addres" layoutX="123.0" layoutY="277.0" mnemonicParsing="false" onAction="#addRes" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="add res" textFill="WHITE" AnchorPane.bottomAnchor="97.39999999999998" AnchorPane.leftAnchor="123.0" />
                 <DatePicker fx:id="resdate" prefHeight="26.0" prefWidth="111.0" style="-fx-background-radius: 5;" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="199.0" />
                 <DatePicker fx:id="returndate" prefHeight="26.0" prefWidth="111.0" style="-fx-background-radius: 5;" AnchorPane.leftAnchor="167.0" AnchorPane.topAnchor="199.0" />
                 <Button fx:id="back" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToHome" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="Back" textFill="WHITE" />
                 <ParallelCamera />
-                <Button fx:id="extendre" layoutX="189.0" layoutY="334.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="extendres" textFill="WHITE" />
             </children>
         </AnchorPane>
         <AnchorPane layoutX="301.0" prefHeight="400.0" prefWidth="301.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TableView fx:id="tableforbook" prefHeight="265.0" prefWidth="236.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="53.0">
+                <TableView fx:id="tableforbook" prefHeight="265.0" prefWidth="222.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="53.0">
                     <columns>
-                        <TableColumn fx:id="column1" prefWidth="77.0" text="BookID" />
-                        <TableColumn fx:id="column2" prefWidth="77.0" text="BookName " />
-                        <TableColumn fx:id="column3" prefWidth="77.0" text="AnotherB" />
+                        <TableColumn fx:id="column1" prefWidth="108.79998856782913" text="BookID" />
+                        <TableColumn fx:id="column2" prefWidth="126.39994812011719" text="BookName " />
                     </columns>
                 </TableView>
-                <TextField prefHeight="26.0" promptText="Search" style="-fx-background-radius: 1200;" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="14.0" />
+                <TextField fx:id="searchField" prefHeight="26.0" promptText="Search" style="-fx-background-radius: 1200;" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="14.0" />
                 <Button layoutX="78.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoReservations" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="Reservations " textFill="WHITE" AnchorPane.bottomAnchor="41.39999999999998" AnchorPane.leftAnchor="78.0" />
                 <Button layoutX="185.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoHistory" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #657166;" text="History" textFill="WHITE" />
             </children>
