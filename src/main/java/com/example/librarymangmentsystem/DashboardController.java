@@ -149,7 +149,7 @@ public class DashboardController implements Initializable {
     @FXML
     public void goToReservation() throws IOException {
         if (hasPermission(13)) {
-            navigateToPage("reservation.fxml");
+            navigateToPage("Reservations.fxml");
         }
     }
 
@@ -159,12 +159,7 @@ public class DashboardController implements Initializable {
                 navigateToPage("createAccount.fxml");
             }
         }
- /*   @FXML
-    public void goToHistoryByBook () throws IOException {
-        if (hasPermission(12)) {
-            navigateToPage("HistoryByBook.fxml");
-        }
-    }*/
+
 
 
 }

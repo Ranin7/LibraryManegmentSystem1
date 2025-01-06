@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +70,7 @@ public class BookController {
             }
         }
 
-        Books books = new Books();
+        Book books = new Book();
         books.setBookName(name);
         books.setAuthor(author);
         books.setGenre(genre);

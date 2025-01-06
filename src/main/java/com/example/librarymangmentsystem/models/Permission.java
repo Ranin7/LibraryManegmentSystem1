@@ -18,7 +18,7 @@ public class Permission {
 
     public Permission() {}
 
-    public Permission(String name, String description) {
+    public Permission(String name) {
         this.name = name;
 
     }

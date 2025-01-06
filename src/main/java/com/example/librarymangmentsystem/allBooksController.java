@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem;
 //commenttest
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.models.services.BookDOAImp;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -24,7 +23,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TextField;
-import java.awt.print.Book;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -88,16 +87,16 @@ public class allBooksController {
     private TableView<String> bookTableView;
 
     @FXML
-    private TableColumn<Book, String> authorColumn;
+    private TableColumn<java.awt.print.Book, String> authorColumn;
 
     @FXML
-    private TableColumn<Book, String> genreColumn;
+    private TableColumn<java.awt.print.Book, String> genreColumn;
 
     @FXML
-    private TableColumn<Book, String> publisherYearColumn;
+    private TableColumn<java.awt.print.Book, String> publisherYearColumn;
 
     @FXML
-    private TableColumn<Book, String> availabilityStatusColumn;
+    private TableColumn<java.awt.print.Book, String> availabilityStatusColumn;
 
     private String SelectedGenre = "All";
     private String SelectedAuthor = "All";
@@ -105,14 +104,14 @@ public class allBooksController {
     private String SelectedAvailabilityStatus = "All";
 
 
-    private final ObservableList<Books> bookList = FXCollections.observableArrayList();
+    private final ObservableList<Book> bookList = FXCollections.observableArrayList();
     private SessionFactory sessionFactory;
 
     @FXML
     private ListView<String> searchSuggestions;// New ListView for predictive suggestions
 
 
-    private final ObservableList<Books> booksList;
+    private final ObservableList<Book> booksList;
 
 
     private BookDOAImp bookDAO;
@@ -246,7 +245,7 @@ public class allBooksController {
     private void loadAllBooks() {
         if (sessionFactory != null) {
             bookList.clear();
-            ObservableList<Books> filtered = filterBooks(SelectedGenre, SelectedAuthor, SelectedPublisherYear, SelectedAvailabilityStatus);
+            ObservableList<Book> filtered = filterBooks(SelectedGenre, SelectedAuthor, SelectedPublisherYear, SelectedAvailabilityStatus);
             if (filtered.isEmpty()) {
                 bookList.addAll(booksList);
             } else {
@@ -258,10 +257,10 @@ public class allBooksController {
         }
     }
 
-    private void displayFilterBooks(ObservableList<Books> books) {
+    private void displayFilterBooks(ObservableList<Book> books) {
         booksContainer.getChildren().clear();
 
-            for (Books book : books) {
+            for (Book book : books) {
                     VBox bookPane = createBookPanel(book);
                     booksContainer.getChildren().add(bookPane);
 
@@ -276,7 +275,7 @@ public class allBooksController {
         String selectedPublisherYear = publisherYearComboBox != null && publisherYearComboBox.getValue() != null ? publisherYearComboBox.getValue() : "All";
         String selectedAvailabilityStatus = availabilityStatusComboBox != null && availabilityStatusComboBox.getValue() != null ? availabilityStatusComboBox.getValue() : "All";
 
-        ObservableList<Books> filtered = filterBooks(selectedGenre, selectedAuthor, selectedPublisherYear, selectedAvailabilityStatus);
+        ObservableList<Book> filtered = filterBooks(selectedGenre, selectedAuthor, selectedPublisherYear, selectedAvailabilityStatus);
         bookList.clear();
         bookList.addAll(filtered);
         displayBooks(bookList);
@@ -284,7 +283,7 @@ public class allBooksController {
 
 
 
-    private ObservableList<Books> filterBooks(String genre, String author, String year, String availability) {
+    private ObservableList<Book> filterBooks(String genre, String author, String year, String availability) {
         return booksList.stream()
                 .filter(book -> (genre.equals("All") || book.getGenre().equalsIgnoreCase(genre)))
                 .filter(book -> (author.equals("All") || book.getAuthor().equalsIgnoreCase(author)))
@@ -312,16 +311,16 @@ public class allBooksController {
 
 
 
-    private void displayBooks(List<Books> books) {
+    private void displayBooks(List<Book> books) {
         booksContainer.getChildren().clear();
 
-        for (Books book : books) {
+        for (Book book : books) {
             VBox bookPane = createBookPanel(book);
             booksContainer.getChildren().add(bookPane);
         }
     }
 
-    private VBox createBookPanel(Books book) {
+    private VBox createBookPanel(Book book) {
         // Create an HBox to hold the book panels side by side
         VBox bookPanelContainer = new VBox(5);  // 10 is the gap between the panels
         bookPanelContainer.setStyle("-fx-background-color: #F2C6B6; -fx-border-radius: 5; -fx-padding: 5;");
@@ -389,7 +388,7 @@ public class allBooksController {
         }
 
         String finalSearchText = searchText;
-        List<Books> filteredBooks = booksList.stream()
+        List<Book> filteredBooks = booksList.stream()
                 .filter(book ->
                         (book.getBookName() != null && book.getBookName().toLowerCase().contains(finalSearchText)) ||
                                 (book.getAuthor() != null && book.getAuthor().toLowerCase().contains(finalSearchText)) ||
@@ -416,7 +415,7 @@ public class allBooksController {
         searchSuggestions.setItems(FXCollections.observableArrayList(suggestions));
         searchSuggestions.setVisible(!suggestions.isEmpty());
     }
-    private void viewDetails(Books book) throws IOException {
+    private void viewDetails(Book book) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDetails.fxml"));
         Parent root = loader.load();
 

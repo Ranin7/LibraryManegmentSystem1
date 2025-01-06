@@ -76,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             String hql = "SELECT COUNT(*) FROM User WHERE email = :email";
             Query<Long> query = session.createQuery(hql, Long.class);
-            query.setParameter("email", email.trim());  // التأكد من تنظيف البريد الإلكتروني
+            query.setParameter("email", email.trim());
             long count = query.uniqueResult();
             return count > 0;
         } catch (Exception e) {

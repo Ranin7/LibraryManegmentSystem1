@@ -38,18 +38,18 @@ public class UserSession {
         userPermissionIds.clear();
 
         if ("Librarian".equals(role)) {
-            userPermissionIds.add(1);  // Add Book
-            userPermissionIds.add(10); // Add Reservation
-            userPermissionIds.add(15); // View Details
-            userPermissionIds.add(14); // View All Books
-            userPermissionIds.add(11); // View History
+            userPermissionIds.add(1);
+            userPermissionIds.add(10);
+            userPermissionIds.add(15);
+            userPermissionIds.add(14);
+            userPermissionIds.add(11);
             userPermissionIds.add(16);
             userPermissionIds.add(9);
             userPermissionIds.add(12);
             userPermissionIds.add(13);
         } else if ("User".equals(role)) {
-            userPermissionIds.add(15); // View Details
-            userPermissionIds.add(14); // View All Books
+            userPermissionIds.add(15);
+            userPermissionIds.add(14);
         }
     }
 

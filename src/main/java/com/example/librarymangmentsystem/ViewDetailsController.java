@@ -1,6 +1,6 @@
 package com.example.librarymangmentsystem;
 
-import com.example.librarymangmentsystem.models.Books;
+import com.example.librarymangmentsystem.models.Book;
 import com.example.librarymangmentsystem.util.HibernateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,9 +78,9 @@ public class ViewDetailsController {
         String userRole = UserSession.getInstance().getUserRole();
 
         if ("Librarian".equals(userRole)) {
-            history.setVisible(true);  // Show the button if the user is a Librarian
+            history.setVisible(true);
         } else if ("User".equals(userRole)) {
-            history.setVisible(false);  // Hide the button if the user is a User
+            history.setVisible(false);
         }
 
 
@@ -90,9 +90,9 @@ public class ViewDetailsController {
     }
     private void loadBookDetails() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Books> query = session.createQuery("from Books where id = :bookID" , Books.class);
+            Query<Book> query = session.createQuery("from Book where id = :bookID" , Book.class);
             query.setParameter("bookID",bookID);
-            Books book = query.uniqueResult();
+            Book book = query.uniqueResult();
 
             if (book != null) {
                 titleLabel.setText(book.getBookName());

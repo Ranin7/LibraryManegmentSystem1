@@ -15,7 +15,7 @@ public class HibernateUtil {
 
     private HibernateUtil(){
         Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Books.class);
+        configuration.addAnnotatedClass(Book.class);
         configuration.addAnnotatedClass(Reservation.class);
         configuration.addAnnotatedClass(Permission.class);
         configuration.addAnnotatedClass(User.class);

@@ -7,18 +7,72 @@
 
 <AnchorPane prefHeight="368.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymangmentsystem.DashboardController">
    <children>
-      <ImageView fitHeight="414.0" fitWidth="602.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+      <!-- Background Image -->
+      <ImageView fx:id="backgroundImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@frame1.jpg" />
          </image>
+         <!-- Set ImageView to scale as the window grows -->
+         <AnchorPane.topAnchor>0.0</AnchorPane.topAnchor>
+         <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
+         <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
+         <AnchorPane.bottomAnchor>0.0</AnchorPane.bottomAnchor>
       </ImageView>
-      <Button fx:id="logoutB" layoutX="316.0" layoutY="255.0" mnemonicParsing="false" onAction="#logout" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Logout" textFill="WHITE" />
-      <Button fx:id="createAccountB" layoutX="183.0" layoutY="255.0" mnemonicParsing="false" onAction="#goToCreateAccount" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Create Account" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="historyB" layoutX="395.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToHistory" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="History" textFill="WHITE" />
-      <Button fx:id="addReservationB" layoutX="251.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Reservation" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="allBooksB" layoutX="109.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAllBooks" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="All Books" textFill="WHITE" />
-      <Button fx:id="reservation" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" onAction="#goToReservation" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Reservations" textFill="WHITE" />
-      <Button fx:id="updateBook" layoutX="395.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToBooksView" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Update Book Information" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="addBookB" layoutX="251.0" layoutY="69.0" mnemonicParsing="false" onAction="#goToAddBook" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;" text="Add Book" textFill="WHITE" />
+
+      <!-- Logout Button -->
+      <Button fx:id="logoutB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Logout" textFill="WHITE">
+         <AnchorPane.bottomAnchor>20.0</AnchorPane.bottomAnchor>
+         <AnchorPane.rightAnchor>150.0</AnchorPane.rightAnchor>
+      </Button>
+
+      <!-- Create Account Button -->
+      <Button fx:id="createAccountB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Create Account" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <AnchorPane.bottomAnchor>20.0</AnchorPane.bottomAnchor>
+         <AnchorPane.leftAnchor>150.0</AnchorPane.leftAnchor>
+      </Button>
+
+      <!-- History Button -->
+      <Button fx:id="historyB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="History" textFill="WHITE">
+         <AnchorPane.topAnchor>150.0</AnchorPane.topAnchor>
+         <AnchorPane.rightAnchor>100.0</AnchorPane.rightAnchor>
+      </Button>
+
+      <!-- Add Reservation Button -->
+      <Button fx:id="addReservationB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Add Reservation" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <AnchorPane.topAnchor>150.0</AnchorPane.topAnchor>
+         <AnchorPane.leftAnchor>250.0</AnchorPane.leftAnchor>
+      </Button>
+
+      <!-- All Books Button -->
+      <Button fx:id="allBooksB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="All Books" textFill="WHITE">
+         <AnchorPane.topAnchor>50.0</AnchorPane.topAnchor>
+         <AnchorPane.leftAnchor>50.0</AnchorPane.leftAnchor>
+      </Button>
+
+      <!-- Reservations Button -->
+      <Button fx:id="reservation" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Reservations" textFill="WHITE">
+         <AnchorPane.topAnchor>150.0</AnchorPane.topAnchor>
+         <AnchorPane.leftAnchor>50.0</AnchorPane.leftAnchor>
+      </Button>
+
+      <!-- Update Book Information Button -->
+      <Button fx:id="updateBook" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Update Book Information" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <AnchorPane.topAnchor>50.0</AnchorPane.topAnchor>
+         <AnchorPane.rightAnchor>50.0</AnchorPane.rightAnchor>
+      </Button>
+
+      <!-- Add Book Button -->
+      <Button fx:id="addBookB" prefHeight="56.0" prefWidth="97.0" style="-fx-background-color: #657166; -fx-font-weight: bold;"
+              text="Add Book" textFill="WHITE">
+         <AnchorPane.topAnchor>50.0</AnchorPane.topAnchor>
+         <AnchorPane.leftAnchor>250.0</AnchorPane.leftAnchor>
+      </Button>
    </children>
 </AnchorPane>

@@ -34,7 +34,7 @@ public class LoginController {
     public void initialize() {
         String savedUsername = preferences.get("username", "");
         String savedPassword = preferences.get("password", "");
-        boolean isRememberMeSelected = preferences.getBoolean("rememberMe", false); // استرجاع حالة "تذكرني"
+        boolean isRememberMeSelected = preferences.getBoolean("rememberMe", false);
 
         userNameField.setText(savedUsername);
         passwordField.setText(savedPassword);
